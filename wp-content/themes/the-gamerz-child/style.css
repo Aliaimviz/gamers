@@ -26,6 +26,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 
 body {
 	font-family: Oswald !important;
+	font-size: 16px;
 }
 
 header#header {
@@ -38,6 +39,7 @@ img.custom-logo {
 
 .header-panel input, .header-panel select, .header-panel button {
 	height: 44px;
+	width: 150px !important;
 	font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
@@ -50,14 +52,13 @@ img.custom-logo {
     border-radius: 5px;
 }
 
+.header-panel button {
+	width: inherit !important;
+}
+
 .header-panel form, .header-panel .corner-btn {
 	padding: 0 !important;
 }
-
-.header-panel .form-inline {
-	padding-left: 60px !important;
-}
-
 
 .header-panel input:hover, 
 .header-panel input:active, 
@@ -101,8 +102,7 @@ img.custom-logo {
 
 .header-panel .corner-btn a, .header-panel .corner-btn a:hover {
 	background-color: #fff;
-	padding-top: 11px;
-	padding-bottom: 11px;
+    padding: 11px 17px;
 	font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
@@ -111,7 +111,6 @@ img.custom-logo {
     font-family: oswald;
     letter-spacing: 0.5px;
     margin-right: 10px;
-    padding-left: 8px;
     border-radius: 5px;
 }
 
@@ -122,10 +121,12 @@ img.custom-logo {
 
 .game-menu {
 	background-color: #c5161d;
+	padding: 0;
 }
 
 .magazine-menu {
 	background-color: #23262d;
+
 }
 
 .top-both-menu {
@@ -133,12 +134,95 @@ img.custom-logo {
 }
 
 
+.top-both-menu ul {
+	margin: 0;
+    padding: 0;
+    list-style: none;
+}
 
 
+.top-both-menu ul li {
+	color: #fff;
+	text-transform: uppercase;
+
+}
+.top-both-menu ul li ul {
+	display: none;
+}
+
+.menu-header-magazine-menu-container > ul {
+	float: right;
+}
+.menu-header-game-menu-container > ul li, .menu-header-magazine-menu-container > ul li {
+	float: left;
+	padding-right: 22px;
+}
+
+.top-both-menu ul li a {
+	color: #fff;
+}
+
+.top-both-menu ul li a i {
+	padding-right: 12px;
+}
 
 
+.top-both-menu ul li,
+.top-both-menu ul li a, 
+.top-both-menu ul li, 
+.top-both-menu ul li a {
+	
+	padding: 36px 7px 35px 4px;
+}
+
+.top-both-menu ul li.game-icon {
+	margin-right: 58px;
+}
 
 
+.top-both-menu ul li.game-icon,
+.top-both-menu ul li.game-icon a
+{
+	padding: 30px 14px !important;
+	background-color: #b3b921;
+}
+
+.top-both-menu ul li.magazine-icon
+{
+    padding: 17px;
+    float: right;
+    margin-right: 15px;
+}
+
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+
+
+.float-right {
+	float: right;
+}
+
+.top-both-menu ul li a:hover,
+.top-both-menu ul li a:active,
+.top-both-menu ul li a:focus {
+	outline: 0;
+	text-decoration: none;
+}
+
+.menu-header-game-menu-container ul li a:hover,
+.menu-header-game-menu-container ul li a:active,
+.menu-header-game-menu-container ul li a:focus { 
+	background-color: #b1bb1a;
+}
+
+.menu-header-magazine-menu-container ul li a:hover,
+.menu-header-magazine-menu-container ul li a:active,
+.menu-header-magazine-menu-container ul li a:focus { 
+	background-color: #1c697d;
+
+}
 
 
 

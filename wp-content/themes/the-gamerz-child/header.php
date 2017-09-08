@@ -61,8 +61,10 @@
 				            </form>
 
 							<div class="corner-btn col-xs-4 col-sm-4 col-md-4 col-lg-4">
-								<a href="#" class="btn btn-default">registeri <i class="fa fa-user-circle" aria-hidden="true"></i></a>
-								<a href="#" class="yellow-btn btn btn-default">+ aggiungi un file</a>
+								<div class="float-right">
+									<a href="#" class="btn btn-default">registeri <i class="fa fa-user-circle" aria-hidden="true"></i></a>
+									<a href="#" class="yellow-btn btn btn-default">+ aggiungi un file</a>
+								</div>
 							</div>
 
 				        </div>
@@ -75,9 +77,12 @@
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix top-both-menu">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 game-menu">
 			<?php
+
+				$walker = new Nfr_Menu_Walker();
 				wp_nav_menu( array(
 					'menu' => 'Header Game menu',
-					'items_wrap' => game_menu_wrap()
+					'items_wrap' => game_menu_wrap(),
+					'walker' => $walker
 				) );
 			?>
 			</div>
@@ -85,7 +90,8 @@
 			<?php
 				wp_nav_menu( array(
 					'menu' => 'Header Magazine menu',
-					'items_wrap' => magazine_menu_wrap()
+					'items_wrap' => magazine_menu_wrap(),
+					'walker' => $walker
 				) );
 			?>
 			</div>
