@@ -1,0 +1,147 @@
+/*!
+Theme Name: The Gamerz Child
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Template: the-gamerz
+Text Domain:  the-gamerz-child
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+The Gamerz is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
+*/
+
+
+@import url('../the-gamerz/style.css');
+
+body {
+	font-family: Oswald !important;
+}
+
+header#header {
+	height: 95px;
+}
+
+img.custom-logo {
+    margin-top: 14px;
+}
+
+.header-panel input, .header-panel select, .header-panel button {
+	height: 44px;
+	font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 1px solid #b1b1b1;
+    color: #23262d;
+    font-family: oswald;
+    letter-spacing: 0.5px;
+    margin-right: 10px;
+    padding-left: 8px;
+    border-radius: 5px;
+}
+
+.header-panel form, .header-panel .corner-btn {
+	padding: 0 !important;
+}
+
+.header-panel .form-inline {
+	padding-left: 60px !important;
+}
+
+
+.header-panel input:hover, 
+.header-panel input:active, 
+.header-panel input:focus,
+.header-panel select:hover, 
+.header-panel select:active, 
+.header-panel select:focus {
+	outline:0px !important;
+    box-shadow: none !important;
+	outline-width: 0;
+    border: 1px solid #b1b1b1;
+}
+
+.header-panel select,
+ {
+  	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAMAAAAGcixRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzJCM0M4OTc5NDY0MTFFN0I5RkY4MDBEMkEyN0M5OTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzJCM0M4OTg5NDY0MTFFN0I5RkY4MDBEMkEyN0M5OTAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDMkIzQzg5NTk0NjQxMUU3QjlGRjgwMEQyQTI3Qzk5MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDMkIzQzg5Njk0NjQxMUU3QjlGRjgwMEQyQTI3Qzk5MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pn8GrHsAAAAeUExURf///319fdHR0SYmJgAAAMXFxaqqqvT09EJCQpycnEKQ8VQAAAApSURBVHjaYmBAAHYOJhDFyAYimJmgBIhihbKAbBYYi4GBk4kBFQAEGAAMfgBJqlnf3gAAAABJRU5ErkJggg==') no-repeat 93% 50%;
+ 	padding: 0 21px 0 8px;
+    display: block;
+}
+
+.header-panel button, 
+.header-panel button:hover, 
+.header-panel button:active, 
+.header-panel button:focus {
+    padding: 6px 14px;
+    outline: 0px !important;
+    -webkit-appearance: none;
+    background-color: #1c697d !important;
+    color: #fff !important;
+    border-color: #1c697d;
+}
+.header-panel input::placeholder {
+	color: #23262d;
+}
+
+.header-panel .panel-default{
+	border: 0;
+    box-shadow: none;
+    margin-top: 14px;
+}
+
+.header-panel .corner-btn a, .header-panel .corner-btn a:hover {
+	background-color: #fff;
+	padding-top: 11px;
+	padding-bottom: 11px;
+	font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 1px solid #23262d;
+    color: #23262d;
+    font-family: oswald;
+    letter-spacing: 0.5px;
+    margin-right: 10px;
+    padding-left: 8px;
+    border-radius: 5px;
+}
+
+.header-panel a.yellow-btn, .header-panel a.yellow-btn:hover {
+	background-color: #b1bb1a;
+	border-color: #b1bb1a;
+}
+
+.game-menu {
+	background-color: #c5161d;
+}
+
+.magazine-menu {
+	background-color: #23262d;
+}
+
+.top-both-menu {
+	padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
