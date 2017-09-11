@@ -113,3 +113,121 @@ class Nfr_Menu_Walker extends Walker_Nav_Menu{
                 call_user_func_array(array(&$this, 'end_el'), $cb_args);
         }
 }
+
+
+function remove_some_widgets(){
+// Footer Gamerz
+  unregister_sidebar( 'footer-gamerz' );
+  unregister_sidebar( 'sidebar-1' );
+}
+
+add_action( 'widgets_init', 'remove_some_widgets', 11 );
+
+
+  register_sidebar( array(
+    'name'          => esc_html__( 'Footer widget 1', 'the-gamerz-child' ),
+    'id'            => 'footer-widgets-1',
+    'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
+
+  register_sidebar( array(
+    'name'          => esc_html__( 'Footer widget 2', 'the-gamerz-child' ),
+    'id'            => 'footer-widgets-2',
+    'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
+
+
+    register_sidebar( array(
+    'name'          => esc_html__( 'Footer widget 3', 'the-gamerz-child' ),
+    'id'            => 'footer-widgets-3',
+    'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
+
+    register_sidebar( array(
+    'name'          => esc_html__( 'Footer widget 4', 'the-gamerz-child' ),
+    'id'            => 'footer-widgets-4',
+    'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
+
+     register_sidebar( array(
+    'name'          => esc_html__( 'Footer widget 5', 'the-gamerz-child' ),
+    'id'            => 'footer-widgets-5',
+    'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
+
+
+      register_sidebar( array(
+    'name'          => esc_html__( 'Footer widget 6', 'the-gamerz-child' ),
+    'id'            => 'footer-widgets-6',
+    'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h2 class="widget-title">',
+    'after_title'   => '</h2>',
+  ) );
+
+
+      register_sidebar( array(
+      'name'          => esc_html__( 'Footer widget 7', 'the-gamerz-child' ),
+      'id'            => 'footer-widgets-7',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
+
+      register_sidebar( array(
+      'name'          => esc_html__( 'Footer widget 8', 'the-gamerz-child' ),
+      'id'            => 'footer-widgets-8',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
+
+      register_sidebar( array(
+      'name'          => esc_html__( 'Footer Social Media', 'the-gamerz-child' ),
+      'id'            => 'footer-social-media',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
+
+
+// Enable the use of shortcodes within widgets.
+add_filter( 'widget_text', 'do_shortcode' ); 
+
+// Assign the tag for our shortcode and identify the function that will run. 
+add_shortcode( 'template_directory_uri', 'wpse61170_template_directory_uri' );
+
+// Define function 
+function wpse61170_template_directory_uri() {
+    return get_bloginfo( 'stylesheet_directory' );
+}
