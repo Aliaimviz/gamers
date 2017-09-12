@@ -15,8 +15,10 @@
 
 	<footer>
 			<div class="footer-ads-area clearfix">
-					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 paragraph-area">
-						<?php dynamic_sidebar( 'Footer widget 1' ); ?>
+					<div class="widget-first-image">
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 paragraph-area">
+							<?php dynamic_sidebar( 'Footer widget 1' ); ?>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 buying-guides">
 						<?php dynamic_sidebar( 'Footer widget 2' ); ?>
@@ -28,17 +30,17 @@
 			<div style="clear: both;"></div>
 			<div class="container">
 				<div class="footer-widgets widget-heading clearfix">
-					<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<?php dynamic_sidebar( 'Footer widget 4' ); ?>
 					</div>
-					<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<?php dynamic_sidebar( 'Footer widget 5' ); ?>
 					</div>
-					<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<?php dynamic_sidebar( 'Footer widget 6' ); ?>
 						<?php dynamic_sidebar( 'Footer Social Media' ); ?>
 					</div>
-					<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<?php dynamic_sidebar( 'Footer widget 7' ); ?>
 					</div>
 				</div>
@@ -95,6 +97,30 @@
 			$(this).children('.sub-menu').slideUp();
 		});
 	});
+
+
+	function openCity(evt, cityName) {
+	    // Declare all variables
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+
+	    // Show the current tab, and add an "active" class to the link that opened the tab
+	    document.getElementById(cityName).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
+
+
 </script>
 
 <?php wp_footer(); ?>

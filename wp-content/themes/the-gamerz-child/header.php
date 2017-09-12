@@ -26,7 +26,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 
-	<header id="header">
+	<header id="header" class="clearfix">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 clearfix">
 			<div class="col-4 col-sm-12 col-md-4 col-lg-4 logo-img">
 				<?php the_custom_logo(); ?>
