@@ -1,5 +1,6 @@
 <?php
 
+
 function game_menu_wrap() {
   // default value of 'items_wrap' is <ul id="%1$s" class="%2$s">%3$s</ul>'
   
@@ -212,6 +213,26 @@ add_action( 'widgets_init', 'remove_some_widgets', 11 );
       register_sidebar( array(
       'name'          => esc_html__( 'Footer Social Media', 'the-gamerz-child' ),
       'id'            => 'footer-social-media',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
+      register_sidebar( array(
+      'name'          => esc_html__( 'Magazine Page Sidebar', 'the-gamerz-child' ),
+      'id'            => 'magazine-page-sidebar',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
+      register_sidebar( array(
+      'name'          => esc_html__( 'Magazine Detail Page Sidebar', 'the-gamerz-child' ),
+      'id'            => 'magazine-detail-page-sidebar',
       'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
       'before_widget' => '<section id="%1$s" class="widget %2$s">',
       'after_widget'  => '</section>',

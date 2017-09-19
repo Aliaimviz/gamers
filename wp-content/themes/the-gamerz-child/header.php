@@ -16,8 +16,8 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald:100,200,300,400,500,600,700,800,900" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" />
 	<link rel="stylesheet" type="text/css" href="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/libraries/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/libraries/font-awesome/css/font-awesome.min.css">
 	<?php wp_head(); ?>
