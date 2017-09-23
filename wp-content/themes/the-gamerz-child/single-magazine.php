@@ -28,36 +28,44 @@ get_header(); ?>
 							<div class="gadgets-content">
 								<h3 class="Raleway">now reading</h3>
 								<p class="Raleway">
-									Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting...
+									<?= get_the_excerpt(); ?>...
 								</p>
 							</div>
 
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix next-prev">
 									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-										<a class="Raleway semi-transparent-button right" href="#"> <i class="fa fa-angle-left" aria-hidden="true"></i> prev </a>
+										<?php
+											$prev_post = get_previous_post();
+											if($prev_post) {
+											   $prev_title = strip_tags(str_replace('"', '', $prev_post->post_title));
+											   echo "\t" . '<a rel="prev" class="Raleway semi-transparent-button right" href="' . get_permalink($prev_post->ID) . '" title="' . $prev_title. '" ><i class="fa fa-angle-left" aria-hidden="true"></i> prev'. '</a>' . "\n";
+											} else {
+											   echo "\t" . '<a rel="prev" class="Raleway semi-transparent-button right disabled-button" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i> prev</a>' . "\n";
+											}
+										?>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-										<a class="Raleway semi-transparent-button left" href="#">next <i class="fa fa-angle-right" aria-hidden="true"></i> </a>										
+
+										<?php 
+											$next_post = get_next_post();
+											if($next_post) {
+											   $next_title = strip_tags(str_replace('"', '', $next_post->post_title));
+											   echo "\t" . '<a rel="next" href="' . get_permalink($next_post->ID) . '" title="' . $next_title. '" class="Raleway semi-transparent-button left">next <i class="fa fa-angle-right" aria-hidden="true"></i></a>' . "\n";
+											} else {
+											   echo "\t" . '<a rel="next" href="#" class="Raleway semi-transparent-button left disabled-button">next <i class="fa fa-angle-right" aria-hidden="true"></i></a>' . "\n";
+											}
+										?>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<div class="side-content">
+						<div class="side-content single-side-content">
 							<h2 class="Raleway"> contents</h2>
 							<div class="list-content">
-								<ul>
-									<li><a href="#overview">Overview</a></li>
-									<li><a href="#rating">Rating</a></li>
-									<li><a href="#full_article">Full Article</a></li>
-									<li><a href="#custom_anchor">Custom Anchor</a></li>
-									<li><a href="#another_anchor">Another Anchor</a></li>
-									<li><a href="#unique_per_post">This menu is unique per post</a></li>
-									<li><a href="#updated">Updated </a></li>
-									<li><a href="#photos">Photos</a></li>
-									<li><a href="#final_thoughts">Final Thoughts</a></li>
-									<li><a href="#comments">Comments</a></li>
+								<ul id="navigation-ul">
+									
 								</ul>
 							</div>
 						</div>
@@ -79,152 +87,98 @@ get_header(); ?>
 					</div>
 
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pad-r19-l17 content-single-magazine">
-						
-						<div class="intro-with-bg" id="overview">
-							<span class="Raleway">31 july</span>
-							<h2>Lorem Ipsum Dummy heading</h2>
-							<p class="Raleway">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-						</div>
+											
+							
+									<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-						<div class="intro-without-bg" id="rating">
-							<h2>lorem Ipsum Du.mmy heading</h2>
-							<p class="Raleway">Aorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-						</div>
-
-						<div class="image-text-quote">
-							<img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/magazine-single-banner.png">
-						</div>
-
-						<div id="full_article">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad0 dual-quote">
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-quote left-quote">
-									<div>
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<p>
-											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-										</p>
-										<h5>John Smith</h5>
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-quote right-quote">
-									<div>
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<p>
-											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-										</p>
-										<h5>John Smith</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div id="custom_anchor">							
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad0 dual-quote">
-								<div class="text-quote single-quote">
-									<div>
-										<i class="fa fa-quote-left" aria-hidden="true"></i>
-										<p>
-											Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-										</p>
-										<h5>John Smith</h5>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-
-						<div class="un-banner" id="another_anchor">
-							<h3 class="Raleway">My Revolever were strapped to my Lifeless body which, for some unfaithamoble reason, I could not bring myself to touch </h3>
-						</div>
-
-						<div class="mg-slider" id="photos">
-							<style>
+									<?php the_content(); ?>
 								
-							</style>
-						
-								<div id="main_area">
-									<!-- Slider -->
-									<div class="row">
-										<div class="col-xs-12" id="slider">
-											<!-- Top part of the slider -->
-											<div class="row">
-												<div class="col-sm-12" id="carousel-bounding-box">
-													<div class="carousel slide" id="myCarousel">
-														<!-- Carousel items -->
-														<div class="carousel-inner">
-															<div class="active item" data-slide-number="0">
-																<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-1.png">
-															</div>
-															<div class="item" data-slide-number="1">
-																<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-2.png">
-															</div>
-															<div class="item" data-slide-number="2">
-																<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-3.png">
-															</div>
-															<div class="item" data-slide-number="3">
-																<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-4.png">
-															</div>
-															<div class="item" data-slide-number="4">
-																<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-5.png">
-															</div>
-															<div class="item" data-slide-number="5">
-																<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-6.png">
+									<?php if ( comments_open() || get_comments_number() ) :
+										comments_template();
+									endif; ?>
+
+									<?php endwhile; ?>
+									<?php endif; ?>
+									
+			
+									
+
+									
+									<?php /* <div class="mg-slider" id="photos">
+											<div id="main_area">
+												<div class="row">
+													<div class="col-xs-12" id="slider">
+														<div class="row">
+															<div class="col-sm-12" id="carousel-bounding-box">
+																<div class="carousel slide" id="myCarousel">
+																	<div class="carousel-inner">
+																		<div class="active item" data-slide-number="0">
+																			<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-1.png">
+																		</div>
+																		<div class="item" data-slide-number="1">
+																			<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-2.png">
+																		</div>
+																		<div class="item" data-slide-number="2">
+																			<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-3.png">
+																		</div>
+																		<div class="item" data-slide-number="3">
+																			<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-4.png">
+																		</div>
+																		<div class="item" data-slide-number="4">
+																			<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-5.png">
+																		</div>
+																		<div class="item" data-slide-number="5">
+																			<img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-6.png">
+																		</div>
+																	</div>
+																	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+																		<span class="glyphicon glyphicon-chevron-left"></span>                                       
+																	</a>
+																	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+																		<span class="glyphicon glyphicon-chevron-right"></span>
+																	</a>
+
+																	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+																		<span class="fa fa-arrow-circle-left"></span>                                       
+																	</a>
+																	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+																		<span class="fa fa-arrow-circle-right"></span>
+																	</a>
+																</div>
 															</div>
 														</div>
-														
-
-														<!-- Carousel nav -->
-														<!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-															<span class="glyphicon glyphicon-chevron-left"></span>                                       
-														</a>
-														<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-															<span class="glyphicon glyphicon-chevron-right"></span>
-														</a> -->
-
-														<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-															<span class="fa fa-arrow-circle-left"></span>                                       
-														</a>
-														<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-															<span class="fa fa-arrow-circle-right"></span>
-														</a>
-
-
-
 													</div>
 												</div>
+												
+												<div class="row hidden-xs" id="slider-thumbs">
+													<ul class="hide-bullets">
+														<li class="col-sm-2">
+															<a class="thumbnail" id="carousel-selector-0"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-1.png"></a>
+														</li>
+														<li class="col-sm-2">
+															<a class="thumbnail" id="carousel-selector-1"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-2.png"></a>
+														</li>
+														<li class="col-sm-2">
+															<a class="thumbnail" id="carousel-selector-2"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-3.png"></a>
+														</li>
+														<li class="col-sm-2">
+															<a class="thumbnail" id="carousel-selector-3"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-4.png"></a>
+														</li>
+														<li class="col-sm-2">
+															<a class="thumbnail" id="carousel-selector-4"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-5.png"></a>
+														</li>
+														<li class="col-sm-2">
+															<a class="thumbnail" id="carousel-selector-5"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-6.png"></a>
+														</li>
+													</ul>
+												</div>
 											</div>
-										</div>
-									</div>
-									<!--/Slider-->
-									<div class="row hidden-xs" id="slider-thumbs">
-										<!-- Bottom switcher of slider -->
-										<ul class="hide-bullets">
-											<li class="col-sm-2">
-												<a class="thumbnail" id="carousel-selector-0"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-1.png"></a>
-											</li>
-											<li class="col-sm-2">
-												<a class="thumbnail" id="carousel-selector-1"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-2.png"></a>
-											</li>
-											<li class="col-sm-2">
-												<a class="thumbnail" id="carousel-selector-2"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-3.png"></a>
-											</li>
-											<li class="col-sm-2">
-												<a class="thumbnail" id="carousel-selector-3"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-4.png"></a>
-											</li>
-											<li class="col-sm-2">
-												<a class="thumbnail" id="carousel-selector-4"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-5.png"></a>
-											</li>
-											<li class="col-sm-2">
-												<a class="thumbnail" id="carousel-selector-5"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-6.png"></a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
+										</div> */ ?>
 
-						<div class="comments-form-box">
-							<!-- comment form and box will come here -->
-						</div>
+									<div class="comments-form-box">
+										
+									</div>
+									
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 magazine-detail-sidebar">
 						<?php dynamic_sidebar( 'Magazine Detail Page Sidebar' ); ?>

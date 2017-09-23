@@ -51,7 +51,28 @@
 			</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-	<script src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery-1.12.4.min.js"></script>
+
+<?php /* <!-- 
+<script>
+if(!window.jQuery)
+{
+   var script = document.createElement('script');
+   script.type = "text/javascript";
+   script.src = "<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery-1.12.4.min.js";
+   document.getElementsByTagName('footer')[0].appendChild(script);
+}
+</script> --> */ ?>
+
+<script>
+	if (typeof jQuery == 'undefined') {  
+    	  
+    	var jq = document.createElement('script'); jq.type = 'text/javascript';
+		jq.src = "<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery-1.12.4.min.js";
+		document.getElementsByTagName('footer')[0].appendChild(jq);
+
+	}
+</script>
+
  	<script src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/libraries/bootstrap/js/bootstrap.min.js"></script>
 	<script src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/js/jquery.iframetracker.js"></script>
 	<script src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/js/main.js"></script>

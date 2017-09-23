@@ -42,7 +42,7 @@ function magazine_menu_wrap() {
 
 
 
-class Nfr_Menu_Walker extends Walker_Nav_Menu{
+class Nfr_Menu_Walker extends Walker_Nav_Menu {
 
                 /**
          * Traverse elements to create list from elements.
@@ -240,6 +240,26 @@ add_action( 'widgets_init', 'remove_some_widgets', 11 );
       'after_title'   => '</h2>',
     ) );
 
+      register_sidebar( array(
+      'name'          => esc_html__( 'Magazine Archieve Page Sidebar', 'the-gamerz-child' ),
+      'id'            => 'magazine-archieve-page-sidebar',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
+      register_sidebar( array(
+      'name'          => esc_html__( 'Magazine Buying Guide Sidebar', 'the-gamerz-child' ),
+      'id'            => 'magazine-buying-guide-sidebar',
+      'description'   => esc_html__( 'Add widgets here.', 'the-gamerz-child' ),
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h2 class="widget-title">',
+      'after_title'   => '</h2>',
+    ) );
+
 
 
 // Enable the use of shortcodes within widgets.
@@ -251,4 +271,79 @@ add_shortcode( 'template_directory_uri', 'wpse61170_template_directory_uri' );
 // Define function 
 function wpse61170_template_directory_uri() {
     return get_bloginfo( 'stylesheet_directory' );
+}
+
+
+function wpcodex_add_excerpt_support_for_cpt() {
+ add_post_type_support( 'magazine', 'excerpt' );
+}
+
+add_action( 'init', 'wpcodex_add_excerpt_support_for_cpt' );
+add_shortcode('picture', 'random_picture');
+function random_picture($atts) {
+   extract(shortcode_atts(array(
+      'class' => flase
+   ), $atts));
+   $html ='';
+   $html .='<div class="row">
+      <div class="col-lg-12" style="padding: 0; padding-right: 2px;">
+      <div class="tabbable">
+      <ul class="nav nav-pills nav-stacked col-md-4 col-md-push-8 col-lg-3 col-lg-push-9">';
+   $query_cpt3 = array (
+            'post_type' => 'video',
+            'posts_per_page'  =>  5
+            );
+  $custom_query = new WP_Query ( $query_cpt3 );
+  if ( $custom_query->have_posts() ) { 
+    
+    $i =0;
+    while ( $custom_query->have_posts() ) : 
+        $custom_query->the_post(); 
+    $post_id = get_the_ID();
+
+    $url_video = get_post_meta($post_id,'video_url',true);
+    
+    if($i==0){
+      $html .='<li class="active"><a href="#'.$post_id.'" data-toggle="tab"><i><i class="fa fa-play" aria-hidden="true"></i></i> <i>'.get_the_title($post_id).'</i></a></li>';
+      $i=1;
+    }else{
+      $html .='<li><a href="#'.$post_id.'" data-toggle="tab"><i><i class="fa fa-play" aria-hidden="true"></i></i> <i>'.get_the_title($post_id).'</i></a></li>';
+    }
+    endwhile;
+
+   $html .='</ul><div class="tab-content col-md-8 col-md-pull-4 col-lg-9 col-lg-pull-3">';
+   $j=0;
+    while ( $custom_query->have_posts() ) : 
+        $custom_query->the_post(); 
+    $post_id = get_the_ID();
+     $url_video = get_post_meta($post_id,'video_url',true);
+    $term_list = wp_get_post_terms($post_id, 'video-cat', array("fields" => "names"));
+    $term_lists = wp_get_post_terms($post_id, 'video-cat', array("fields" => "all"));
+        //print_r($term_lists);
+    $term_lists_id = $term_lists[0]->slug;
+    if($j==0){
+      $html .='<div id="'.$post_id.'" class="tab-pane active">
+
+          <iframe src="'.$url_video.'" width="652" height="424" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+          <div class="iframe-overlay">
+          <h4><a href="'.site_url().'/video-cat/'.$term_lists_id.'">'.$term_list[0].'</a></h4>
+          <h2>'.get_the_title($post_id).'</h2>
+          </div>
+          </div>';
+      $j=1;
+    }else{
+      $html .='<div id="'.$post_id.'" class="tab-pane">
+
+          <iframe src="'.$url_video.'" width="652" height="424" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+          <div class="iframe-overlay">
+          <h4><a href="'.site_url().'/video-cat/'.$term_lists_id.'">'.$term_list[0].'</a></h4>
+          <h2>'.get_the_title($post_id).'</h2>
+          </div>
+          </div>';
+    }
+    endwhile;
+    $html .='</div>';
+ }
+ $html .="</div></div></div>";
+return $html;
 }
