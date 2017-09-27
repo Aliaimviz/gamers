@@ -1,0 +1,21 @@
+Tuesday, 26-Sep-2017 13:23:29 - backup started
+Tuesday, 26-Sep-2017 13:23:29 - wp version     : 4.8.1
+Tuesday, 26-Sep-2017 13:23:29 - php version    : 5.6.30
+Tuesday, 26-Sep-2017 13:23:29 - mysql version  : 5.5.5
+Tuesday, 26-Sep-2017 13:23:29 - memory limit   : 1024M
+Tuesday, 26-Sep-2017 13:23:29 - execution time : 600
+Tuesday, 26-Sep-2017 13:23:29 - mysql timeout  : 600
+Tuesday, 26-Sep-2017 13:23:29 - socket timeout : 600
+Tuesday, 26-Sep-2017 13:23:29 - files larger than 25 MB will be excluded from the backup
+Tuesday, 26-Sep-2017 13:23:29 - generating file list
+Tuesday, 26-Sep-2017 13:23:29 - file skipped, file is larger than 25 MB - "**SITE-ROOT**/wp-content/ai1wm-backups/site.startupbug.net-thegamers-20170919-072848-209.wpress"  89.98 MB
+Tuesday, 26-Sep-2017 13:23:29 - file skipped, file is larger than 25 MB - "**SITE-ROOT**/wp-content/ai1wm-backups/site.startupbug.net-thegamers-20170920-055728-284.wpress"  89.99 MB
+Tuesday, 26-Sep-2017 13:23:34 - 2 files were excluded from the backup
+Tuesday, 26-Sep-2017 13:23:34 - number of files to include in the archive is 4747, and their uncompressed size is 81.97 MB
+Tuesday, 26-Sep-2017 13:23:34 - finished generating file list
+Tuesday, 26-Sep-2017 13:23:34 - database backup started
+Tuesday, 26-Sep-2017 13:23:34 - backing up tables with "wp_" prefix
+Tuesday, 26-Sep-2017 13:23:34 - number of tables to backup - 19
+Tuesday, 26-Sep-2017 13:23:35 - database backup finished
+Tuesday, 26-Sep-2017 13:23:35 - archiving files using ziparchive
+Tuesday, 26-Sep-2017 13:24:58 - backup finished

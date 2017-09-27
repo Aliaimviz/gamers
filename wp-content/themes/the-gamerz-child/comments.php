@@ -52,7 +52,46 @@ if ( post_password_required() ) {
 
 	endif; // Check for have_comments().
 
-	comment_form();
+
 	?>
+	<div class="row">
+	<div class="col-md-1"><img alt="" src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32"></div>
+	<div class="col-md-11">
+
+		<div id="comment_form">
+			<div><h4><i class="fa fa-comments" aria-hidden="true"></i>Comment</h4></div>
+	<div>
+		<textarea rows="10" name="comment" id="comment" class="textarea" placeholder="Enter Your Comment Here"></textarea>
+	</div>
+	<div>
+		<input type="text" name="name" id="name" value="" class="textbox" placeholder="Name">
+	</div>
+	<div>
+		<input type="email" name="email" id="email" value="" class="textbox" placeholder="Email">
+	</div>
+	
+	<div class="comment-footer">
+		
+		<ul class="comments_ul">
+			<li><img alt="" src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g" srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32" style="border-radius: 15px;"></li>
+			<li><i class="fa fa-user-o" aria-hidden="true"></i>JS</li>
+			<li><i class="fa fa-user-o" aria-hidden="true"></i>Apri 13th, 2017 12:26</li>
+		</ul>
+
+		<p class="comment_para">Any1 played it ready? Is it worth buying?</p>
+
+
+		<ul class="comments_rate_ul">
+			<li>Rate this comment</li>
+			<li>0 <i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
+			<li>0 <i class="fa fa-thumbs-down" aria-hidden="true"></i></li>
+		</ul>
+
+
+	</div>
+</div>
+	</div>
+	</div>
+
 
 </div><!-- #comments -->

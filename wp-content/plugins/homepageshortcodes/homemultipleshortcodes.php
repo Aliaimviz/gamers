@@ -2,7 +2,10 @@
 /**
 Plugin Name: homeshortcodes
 **/
+add_shortcode('editor-liked','editor_liked');
+function editor_liked(){
 
+}
 add_shortcode("banner-section","banner_section");
 function banner_section($atts = array(), $content = null, $tag){
 	shortcode_atts(array(
@@ -15,17 +18,8 @@ function banner_section($atts = array(), $content = null, $tag){
         'class' =>false
     ), $atts);
 
-   /* $query_cpt3 = array (
-            'post_type' => 'magazine',
-            'posts_per_page'  =>  1,
-            'order' => 'ASC'
-            );
-		$custom_query = new WP_Query ( $query_cpt3 );
-		if($custom_query->have_posts()){*/
+   
 			$html ='';
-			/*while ( $custom_query->have_posts() ) : 
-				$custom_query->the_post(); 
-				$post_id = get_the_ID();*/
 				$html .='
 						<div class="un-banner '.$atts["class"].'" style="background-image:url('.$atts["image"].');">
 							<div class="transbox" style="background-color#:'.$atts["background-color"].'; opacity:'.$atts["opacity"].'">
@@ -33,9 +27,9 @@ function banner_section($atts = array(), $content = null, $tag){
 							</div>
 						 </div>
 						';
-			//endwhile;
+	
 			return $html;
-		//}	
+	
 }
 
 
@@ -46,32 +40,20 @@ function without_background($atts = array(), $content = null, $tag){
         'titles' => false,
         'contents' => false
     ), $atts);
-    //print_r($atts);
+    
     global $post;
     $post_id = get_the_ID();
     $html ='';
-    //echo get_the_date($post_id).;
-	/*$query_cpt3 = array (
-            'post_type' => 'magazine',
-            'posts_per_page'  =>  1,
-            'order' => 'ASC'
-            );
-		$custom_query = new WP_Query ( $query_cpt3 );
-		if($custom_query->have_posts()){
-			$html ='';
-			while ( $custom_query->have_posts() ) : 
-				$custom_query->the_post(); 
-				$post_id = get_the_ID();*/
-				$html .='
+    			$html .='
 						<div class="intro-without-bg" id="rating">
 							<h2>'.$atts["titles"].'</h2>
 							<p class="Raleway">'.$atts["contents"].'</p>
 
 						</div>
 						';
-			//endwhile;
+	
 			return $html;
-		//}
+	
 }
 add_shortcode("overview_section1","overview_upper");
 function overview_upper($atts = array(), $content = null, $tag){
@@ -83,22 +65,12 @@ function overview_upper($atts = array(), $content = null, $tag){
         'date' => false,
         'content' => false
     ), $atts);
-	//print_r($atts);
+	
     if(!empty($atts["background"])){
     	global $post;
     	$nice_date = date('M Y', strtotime( $post->post_date ));
     	$html = '';
-    	/*$query_cpt3 = array (
-            'post_type' => 'magazine',
-            'posts_per_page'  =>  1,
-            'order' => 'ASC'
-            );
-		$custom_query = new WP_Query ( $query_cpt3 );
-		if($custom_query->have_posts()){
-			$html .='';
-			while ( $custom_query->have_posts() ) : 
-				$custom_query->the_post(); 
-				$post_id = get_the_ID();*/
+    	
 				$html .='
 						<div class="intro-with-bg" id="overview" style="background-color:'.$atts["background"].'">
 							<span class="Raleway">'.$nice_date.'</span>
@@ -106,9 +78,9 @@ function overview_upper($atts = array(), $content = null, $tag){
 							<p class="Raleway">'.$atts["content"].'</p>
 						</div>
 						';
-			//endwhile;
+			
 			return $html;
-		//}
+		
     }
 
 }
@@ -124,18 +96,10 @@ function layout_posts_related($atts = array(), $content = null, $tag){
     ), $atts);
     $html ='';
     if(!empty($atts["half"])){
-    	/*$query_cpt3 = array (
-            'post_type' => 'magazine',
-            'posts_per_page'  =>  2,
-            'order' => 'ASC'
-            );
-	$custom_query = new WP_Query ( $query_cpt3 );
-	if ( $custom_query->have_posts() ) { */
+    
 		$html .='<div id="full_article '.$atts["half"].'">
 				 ';
-		/*while ( $custom_query->have_posts() ) : 
-				$custom_query->the_post(); 
-				$post_id = get_the_ID();*/
+		
 				$html .='
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-quote left-quote '.$atts["class"].'">
 						<div>
@@ -147,22 +111,12 @@ function layout_posts_related($atts = array(), $content = null, $tag){
 						</div>
 						</div>
 						 ';
-		//endwhile;
+		
 		$html .='</div>';
-	//}
+	
     }
     else if(!empty($atts["full"])){
-    /*	$query_cpt3 = array (
-            'post_type' => 'magazine',
-            'posts_per_page'  =>  1,
-            'order' => 'ASC'
-            );
-		$custom_query = new WP_Query ( $query_cpt3 );
-		if ( $custom_query->have_posts() ) { */
-			
-			/*while ( $custom_query->have_posts() ) : 
-					$custom_query->the_post(); 
-					$post_id = get_the_ID();*/
+   
 					$html .='
 
 							<div id="custom_anchor">							
@@ -178,8 +132,7 @@ function layout_posts_related($atts = array(), $content = null, $tag){
 									</div>
 								</div>
 							</div>';
-			//endwhile;
-		//}
+			
     }
    return $html;
 
@@ -294,28 +247,7 @@ function SH_TEST_handler($atts = array(), $content = null, $tag){
         'class' => false
     ), $atts);
 $exp = explode('-',$atts['series']);
-//print_r($exp);
-    /*$args = array(
-	'posts_per_page'   => $atts['quantity'],
-	'number'           => $exp[1],
-	'offset'           => $exp[0],
-	'category'         => $atts['category'],
-	'category_name'    => '',
-	'orderby'          => 'date',
-	'order'            => 'DESC',
-	'include'          => '',
-	'exclude'          => '',
-	'meta_key'         => '',
-	'meta_value'       => '',
-	'post_type'        => 'magazine',
-	'post_mime_type'   => '',
-	'post_parent'      => '',
-	'author'	   => '',
-	'author_name'	   => '',
-	'post_status'      => 'publish'
-	
-);*/
-//print_r($atts['style']);
+
 if(!empty($exp[1])){
 	$limit = $exp[1];
 }
@@ -325,23 +257,21 @@ else if(!empty($atts['quantity'])){
 $args = array( 'post_type'=>'magazine','posts_per_page' => $limit,'offset'=> $exp[0], 'category' =>$atts['category'],'orderby' => 'id','order' => 'DESC');
 $custom_query = new WP_Query( $args );
 
-    //die();
-//echo $atts['category'];
+   
     if (!empty($atts['series']) && !empty($atts['category']) && empty($atts['quantity']) && empty($atts['style'])){
     	
     	$html ='';
 		$i=0;
-		//if ( $custom_query->have_posts() ) { 
+		
 			while ( $custom_query->have_posts() ) : 
 					$custom_query->the_post();
     		 $post_id = get_the_ID();
 				
-				//$post_id = get_the_ID();
-				//echo $i;
+				
 				$featured_img_url = get_the_post_thumbnail_url($post_id,'full');
 				$term_list = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "names"));
 				$term_lists = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "all"));
-				//print_r($term_lists);
+				
 				$term_lists_id = $term_lists[0]->slug;
 				if($term_lists[0]->term_id==$atts["category"]){
 					if($i==0){
@@ -392,25 +322,24 @@ $custom_query = new WP_Query( $args );
 				
 				$i++;
 		endwhile;
-		//}
+		
 		echo $html;
     }
     else if(!empty($atts["series"]) && empty($atts["quantity"]) && empty($atts["category"]) && empty($atts['style'])){
     	$html ='';
 		$i=0;
-		//if ( $custom_query->have_posts() ) { 
+		
 			while ( $custom_query->have_posts() ) : 
 					$custom_query->the_post();
     		 $post_id = get_the_ID();
 				
-				//$post_id = get_the_ID();
-				//echo $i;
+				
 				$featured_img_url = get_the_post_thumbnail_url($post_id,'full');
 				$term_list = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "names"));
 				$term_lists = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "all"));
-				//print_r($term_lists);
+				
 				$term_lists_id = $term_lists[0]->slug;
-				//if($term_lists[0]->term_id==$atts["category"]){
+				
 					if($i==0){
 					
 					$html .='<div class="mag-hom-image '.$atts["class"].'">
@@ -455,17 +384,17 @@ $custom_query = new WP_Query( $args );
 						$html .='</div>';
 					}
 				}
-				//}
+				
 				
 				$i++;
 		endwhile;
-		//}
+		
 		echo $html;
 
 
     }
     else if(!empty($atts["series"]) && !empty($atts["style"]) && empty($atts["quantity"]) && empty($atts["category"])){
-    	//echo "work";
+    	
     	$html ='';
     	$html .='<div class="magazine-news">';
     	while ( $custom_query->have_posts() ) : 
@@ -473,7 +402,7 @@ $custom_query = new WP_Query( $args );
     		 $post_id = get_the_ID();
     		$term_list = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "names"));
 				$term_lists = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "all"));
-			//if($term_lists[0]->term_id==$atts['category']){
+			
 				$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
 				
 				
@@ -491,7 +420,7 @@ $custom_query = new WP_Query( $args );
 							<h2><a href="#">'.get_the_title($post_id).'</a></h2>
 						</div>
 					</div>';
-			//}
+			
     		
     	endwhile;
     	$html .='</div>';
@@ -540,7 +469,7 @@ $custom_query = new WP_Query( $args );
     		$featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
 				$term_list = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "names"));
 				$term_lists = wp_get_post_terms($post_id, 'magazine-category', array("fields" => "all"));
-				//print_r($term_lists);
+				
 				$term_lists_id = $term_lists[0]->slug;
 				$html .='<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="news-grids">
@@ -555,11 +484,10 @@ $custom_query = new WP_Query( $args );
 							<h2><a href="#">'.get_the_title($post_id).'</a></h2>
 						</div>
 					</div>';
-    	//endforeach;
-				//}
+    	
 				endwhile;
     	$html .='</div>';
-    	//wp_reset_postdata();
+    	
     	echo $html;
     }
     else if(empty($atts['quantity']) && !empty($atts["category"]) && empty($atts["series"]) && empty($atts["style"])){

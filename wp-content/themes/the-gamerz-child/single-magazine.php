@@ -85,7 +85,7 @@ get_header(); ?>
 							</div>
 						</div>
 					</div>
-
+<div class="main-flex-div">
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pad-r19-l17 content-single-magazine">
 											
 							
@@ -183,6 +183,7 @@ get_header(); ?>
 					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 magazine-detail-sidebar">
 						<?php dynamic_sidebar( 'Magazine Detail Page Sidebar' ); ?>
 					</div>
+</div>
 				</div>
 			</div>
 
