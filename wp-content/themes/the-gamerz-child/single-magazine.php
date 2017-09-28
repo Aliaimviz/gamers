@@ -4,6 +4,11 @@
 
 get_header(); ?>
 
+<?php
+$post_id = get_the_ID();
+$template = get_post_meta($post_id,'set_template',true);
+
+?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 			
@@ -181,7 +186,13 @@ get_header(); ?>
 									
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 magazine-detail-sidebar">
-						<?php dynamic_sidebar( 'Magazine Detail Page Sidebar' ); ?>
+						<?php 
+							if($template=="Reviews"){
+								dynamic_sidebar( 'magazine-review-sidebar' );
+							}else{
+								dynamic_sidebar( 'Magazine Detail Page Sidebar' );
+							}
+						 ?>
 					</div>
 </div>
 				</div>

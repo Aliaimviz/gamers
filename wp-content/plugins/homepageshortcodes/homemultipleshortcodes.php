@@ -2,9 +2,120 @@
 /**
 Plugin Name: homeshortcodes
 **/
-add_shortcode('editor-liked','editor_liked');
-function editor_liked(){
+add_shortcode('bottom-line','bottom_line');
+function bottom_line($atts = array(), $content = null, $tag){
+	shortcode_atts(array(
+        'var1' => 'default var1',
+        'title' =>false,
+        'contents' => false,
+        'content' => false,
+        'link' => false, 
+        'about' =>false
+    ), $atts);
+		$html ='';
+		$html .='<div class="bottom-line">
+				   <div class="post-bottom-desc">
+				     <h4>'.$atts["title"].'</h4>
+				     <p>'.$atts["contents"].'</p>
+				     <p>'.$atts["content"].'</p>
+				     <p><a href="#" class="btn-post-rate">'.$atts["link"].'</a></p>
+				   </div>
+				   <div class="post-bottom-desc-rating">
+				     <span>
+				       <div class="les">'.$atts["rate"].'</div>
+				     </span>
+				     <p>'.$atts["about"].'</p>
+				   </div>  
+ 				</div>';
+		return $html;
+}
+add_shortcode("controlla-box","controlla");
+function controlla(){
+	$html ='';
+	$query_cpt3 = array (
+            'post_type' => 'controlla'
+            );
+	$custom_query = new WP_Query ( $query_cpt3 );
+	if ( $custom_query->have_posts() ) { 
+		
+		
+		while ( $custom_query->have_posts() ) {
+			$custom_query->the_post(); 
+			//		echo get_the_ID();
+			$html .='<ul class="product-ul">';
+			while( have_rows('conrolla_label') ): the_row();
+				//var_dump(the_sub_field('product_image'));
+						$html .='<li class="product-img"><img src="'.get_sub_field('product_image').'"></li>
+					   <li class="product-owner-logo"><img src="'.get_sub_field('company_logo').'"></li>
+					   <li class="product-price">'.get_sub_field('price').'</li>
+					   <li class="product-buy-btn"><a href="'.get_sub_field('website_url').'">buy now</a></li>';
+			endwhile; 
+			$html .='</ul>';
+		} 
+				
+	}
 
+	//$html .="";
+	return $html;
+}
+add_shortcode('rating-result-title','rating_result_title');
+function rating_result_title($atts = array(), $content = null, $tag){
+	shortcode_atts(array(
+        'var1' => 'default var1',
+        'title' => false,
+        'rate' => false
+    ), $atts);
+		$html ='';
+		$html .='<div class="row">
+					  <div class="col-md-2">      
+					    <div class="rating-title">
+					      <p>'.$atts["title"].'</p>
+					    </div>
+					  </div>
+					  <div class="col-md-8">
+					   <div class="rating-hr">
+					     <hr>
+					   </div>
+					  </div>
+					  <div class="col-md-2">
+					    <div class="rating-result">
+					      <span>
+					        <div>'.$atts["rate"].'</div>
+					      </span>      
+					    </div>
+					  </div>
+				</div>';
+		return $html;
+}
+add_shortcode('editor-not-liked','editor_not_liked');
+function editor_not_liked($atts = array(), $content = null, $tag){
+	shortcode_atts(array(
+        'var1' => 'default var1',
+        'contents' => false
+    ), $atts);
+		$html ='';
+		$html .='<ul>
+       				<li>
+       					<p>
+       						'.$atts["contents"].'
+       					</p>
+       				</li>
+       			</ul>';
+		return $html;
+}
+add_shortcode('editor-liked','editor_liked');
+function editor_liked($atts = array(), $content = null, $tag){
+	shortcode_atts(array(
+        'var1' => 'default var1',
+        'contents' => false
+    ), $atts);
+		$html ='';
+		$html .='<li>
+       					<p>
+       						'.$atts["contents"].'
+       					</p>
+       				</li>';
+		return $html;
 }
 add_shortcode("banner-section","banner_section");
 function banner_section($atts = array(), $content = null, $tag){
@@ -41,8 +152,6 @@ function without_background($atts = array(), $content = null, $tag){
         'contents' => false
     ), $atts);
     
-    global $post;
-    $post_id = get_the_ID();
     $html ='';
     			$html .='
 						<div class="intro-without-bg" id="rating">

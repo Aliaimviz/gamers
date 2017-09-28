@@ -98,7 +98,7 @@ get_header(); ?>
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 pad0 magazine-detail-sidebar">
 					
-						<?php dynamic_sidebar( 'Magazine Buying Guide Sidebar' ); ?>
+						<?php dynamic_sidebar( 'magazine-review-sidebar' ); ?>
 					</div>
 					</div>		
 
@@ -1285,5 +1285,47 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="find-lowest-price">
+      <div class="game-img">
+        <img src="#">
+      </div>
+      <div class="game-score">
+        <ul>
+          <li><p>Your</p></li>
+          <li><p>G2A Score</p></li>
+          <li><p>USers</p></li>
+        </ul>
+      </div>
+      <div class="game-rating-shows">
+        <ul>
+          <li><img src="#"></li>
+          <li><span><div class="less">70</div></span></li>
+          <li><span><div class="less2">68</div></span></li>
+        </ul>
+        <h4>For Honor</h4>
+        <p><i class="fa fa-gamepad" aria-hidden="true"></i>Action, hack and slash</p>
+      </div>
+      <div class="release-date">
+        <div class="game-nam">
+          <span><a href="#" class="gam-whi">PC</a></span>
+          <span><a href="#" class="gam-bla">PS4</a></span>
+        </div>
+        <div class="relase-date-inner">
+          <p>Relaeas Date:</p>
+          <p>14 Feb 2017</p>
+        </div>
+        <div class="game-desc">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+          <span><a href="#" class="game-buy">Find Lowest Price</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <?php
 get_footer();

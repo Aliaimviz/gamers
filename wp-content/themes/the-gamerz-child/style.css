@@ -30,6 +30,7 @@ body {
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 a {
@@ -77,6 +78,7 @@ img.custom-logo {
     padding-left: 8px;
     border-radius: 5px;
 }
+
 
 .accessory-content h3,
 .accessory-content > span,
@@ -282,18 +284,18 @@ footer .footer-widgets h2,
     text-decoration: none;
 }
 
-.menu-header-game-menu-container ul li a:hover,
-.menu-header-game-menu-container ul li a:active,
-.menu-header-game-menu-container ul li a:focus {
+.menu-header-game-menu-container ul li:hover,
+.menu-header-game-menu-container ul li:active,
+.menu-header-game-menu-container ul li:focus {
     background-color: #b1bb1a;
 }
 
-.menu-header-magazine-menu-container ul li a:hover,
-.menu-header-magazine-menu-container ul li a:active,
-.menu-header-magazine-menu-container ul li a:focus {
+
+.menu-header-magazine-menu-container ul li:hover,
+.menu-header-magazine-menu-container ul li:active,
+.menu-header-magazine-menu-container ul li:focus {
     background-color: #1c697d;
 }
-
 .header-panel .form-group {
     margin-bottom: 0;
 }
@@ -335,6 +337,12 @@ footer .footer-widgets h2,
 .menu-item-has-children li {
     width: 100%;
     padding: 0 !important;
+}
+@media (max-width: 1397px) and (min-width: 1201px) {
+    .top-both-menu ul li.game-icon, .top-both-menu ul li.game-icon a{
+        padding: 29px 14px 32px 14px !important;
+    }
+
 }
 
 /*-------------------------------*/
@@ -1388,7 +1396,7 @@ ul.nav.nav-pills.nav-stacked.col-lg-3.col-lg-push-9 {
 
 .comment-reply {
 
-    color: #1376dc;
+    color: #1376dc !important;
     border: 1px solid;
     padding: 5px 21px;
     border-radius: 6px;
@@ -1396,6 +1404,12 @@ ul.nav.nav-pills.nav-stacked.col-lg-3.col-lg-push-9 {
 
 }
 
+section.widget.start-widget img {
+    width: 100%;
+}
+.sidebar-button2 a {
+    background: #000 !important;
+}
 .gadgets-content {
     padding-left: 12px;
     padding-right: 12px;
@@ -2231,6 +2245,7 @@ ul#buying-guide-side li p {
 }
 
 @media all and (min-width: 992px) and (max-width: 1375px) {
+
     .container {
         margin-right: 15px;
         margin-left: 15px;
@@ -2402,8 +2417,17 @@ ul#buying-guide-side li p {
 .similar-products {
     text-align: center;
 }
+ol.comment-list {
+    DISPLAY: NONE;
+}
+img {
+    max-width: 100%;
+}
 
 @media all and (max-width: 991px) {
+    #comment_form{
+        margin-left: 60px;
+    }
 
     .bg-red {
         text-align: center;
@@ -2673,8 +2697,8 @@ ul#buying-guide-side li p {
     }
 
     .textwidget.custom-html-widget img {
-        width: 145px;
-        margin-right: 10px;
+        width: 65%;
+        margin-top: -60px;
     }
 
     ul#buying-guide-side li > a {
@@ -3112,7 +3136,6 @@ ul#buying-guide-side li p {
 }
 
 .text-icons p {
-    white-space: pre;
     margin-bottom: 25px;
 }
 
@@ -3544,15 +3567,12 @@ a.comment-reply:hover {
 }
 
 @media (max-width: 991px) {
-    .postid-243 .right-sidebar-gadget {
+   .right-sidebar-gadget {
         position: relative !important;
         top: 0;
     }
 
-    .page-id-231 .right-sidebar-gadget {
-        position: relative !important;
-        top: 0;
-    }
+
 }
 
 #comment_form {
@@ -3562,7 +3582,7 @@ a.comment-reply:hover {
 }
 
 .row .comment {
-    width: 80%;
+    width: 100%;
     padding-left: 15px;
 }
 
@@ -3864,4 +3884,291 @@ span.rating-our-rating p {
 }
 span.rating-our-rating {
     float: right;
+}
+h4.product-tit {
+    background: #1c697d;
+    padding: 16px 16px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+ul.product-ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #a2a2a2;
+    float: left;
+    width: 100%;
+    border-top: 0;
+}
+
+ul.product-ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    height: 100px;
+    border-left: 1px solid #a2a2a2;
+    padding: 25px 0;
+    border-bottom: 1px solid #a2a2a2;
+}
+ul.product-ul li img {
+    vertical-align: middle;
+}
+li.product-price {
+    color: #000;
+    font-family: Raleway !important;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 50px;
+}
+li.product-buy-btn a {
+    background: #b1bb1a;
+    padding: 12px 22px;
+    text-transform: uppercase;
+    font-weight: 600;
+    vertical-align: middle;
+    display: inline-table;
+    margin-top: 1px;
+        color: #000;
+}
+
+.bottom-line {
+    float: left;
+    width: 100%;
+    background: url('http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/bottom-line.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 15px 17px 15px 15px;
+}
+.post-bottom-desc {
+    color: #fff;
+    float: left;
+    width: 77%;
+}
+
+.post-bottom-desc h4 {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.post-bottom-desc p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: normal;
+}
+.post-bottom-desc p a.btn-post-rate {
+    background: #c5161d;
+    padding: 0px 13px;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 46px;
+    font-weight: bold;
+    border: 1px solid #c5161d;
+    display: -webkit-inline-box;
+    margin-top: 7px !important;
+}
+.post-bottom-desc-rating {
+    float: right;
+    width: 20%;
+    padding-top: 30px;
+}
+.post-bottom-desc-rating span div {
+    line-height: 123px;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    background: url(http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/3.png);
+    background-size: contain;
+    color: #fff;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+.post-bottom-desc-rating span {
+    width: 109px;
+    float: none;
+    margin: 0 auto;
+    display: block;
+}
+.post-bottom-desc-rating p {
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 46px;
+}
+.find-lowest-price {
+    float: left;
+    width: 100%;
+    background: #c01f26;
+    color: #fff;
+    padding: 8px 10px 30px 10px;
+}
+.game-img {
+    float: left;
+    width: 100%;
+}
+.game-score {
+    float: left;
+    width: 100%;
+}
+.game-score ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.game-score ul li {
+    display: inline-block;
+}
+.game-score ul li p {
+    margin-bottom: 0;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+.game-rating-shows {
+    float: left;
+    width: 100%;
+}
+.game-rating-shows ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.game-rating-shows ul li:first-child {
+    text-align: end;
+}
+.game-rating-shows ul li:last-child {
+    text-align: start;
+}.game-rating-shows ul li {
+     display: inline-block;
+ }
+.game-rating-shows h4 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.game-rating-shows > p {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+}
+.release-date {
+    float: left;
+    width: 100%;
+}
+.game-nam {
+    float: left;
+    width: 50%;
+    padding-top: 12px;
+}
+.relase-date-inner {
+    float: right;
+    width: 50%;
+}
+.game-desc {
+    float: left;
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+.relase-date-inner p {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    line-height: unset;
+    font-size: 16px;
+}
+span a.gam-whi {
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #c01f26;
+    font-size: 16px;
+    padding: 7px 19px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+span a.gam-bla {
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 7px 19px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+.game-nam span {
+    margin-right: 2px;
+}
+.game-desc p {
+    text-align: center;
+    margin-bottom: 33px;
+}
+a.game-buy {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 9px 52px;
+    text-decoration: none;
+}
+
+.less {
+    font-size: 31px;
+    font-weight: bold;
+    text-align: center;
+    background: url(http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/3.png);
+    background-size: cover;
+    color: #fff;
+    background-repeat: no-repeat;
+    line-height: 86px;
+    padding: 0;
+}
+
+.game-rating-shows ul li:nth-child(2) {
+    width: 75px;
+}.less2 {
+     font-size: 15px;
+     font-weight: bold;
+     text-align: center;
+     background: url('http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/5.png');
+     background-size: 100%;
+     color: #fff;
+     background-repeat: no-repeat;
+     padding: 0;
+     line-height: 58px;
+     position: relative;
+     top: -5px;
+ }
+.game-rating-shows ul li:first-child img {
+    position: relative;
+    top: -5px;
+}
+.game-rating-shows ul li:last-child span {
+    width: 50px;
+    display: block;
+}
+.game-img img {
+    width: 100%;
+}
+.ratings-main {
+    border-top: 1px solid #000;
+    margin-top: 17px;
+    padding-top: 25px;
+}
+.rating-result {
+    margin-bottom: 29px !important;
+    float: left;
+}
+ul.product-ul {
+    border-bottom: 0;
+    margin-bottom: 20px;
 }
