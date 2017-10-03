@@ -28,6 +28,11 @@
 					</div>
 			</div>
 			<div style="clear: both;"></div>
+            <script>
+            jQuery(document).ready(function(){
+                jQuery("#author").val("sdfasdfa");
+            });
+            </script>
 			<div class="container">
 				<div class="footer-widgets widget-heading clearfix">
 					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">

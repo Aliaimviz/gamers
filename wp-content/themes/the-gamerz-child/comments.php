@@ -1,111 +1,75 @@
 <?php
 /**
- * The template for displaying comments
+ * The template for displaying Comments.
  *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
+ * The area of the page that contains comments and the comment form.
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package The_Gamerz
+ * @package WordPress
+ * @subpackage Twenty_Thirteen
+ * @since Twenty Thirteen 1.0
  */
-
+ 
 /*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
+ * If the current post is protected by a password and the visitor has not yet
+ * entered the password we will return early without loading the comments.
  */
-if ( post_password_required() ) {
-	return;
+$args = array(
+    'status' => 'approve'
+);
+ 
+// The comment Query
+$comments_query = new WP_Comment_Query;
+$comments = $comments_query->query( $args );
+ 
+// Comment Loop
+if ( $comments ) {
+    foreach ( $comments as $comment ) {
+        echo '<p>' . $comment->comment_content . '</p>';
+    }
+} else {
+    echo 'No comments found.';
 }
+if ( post_password_required() )
+    return;
 ?>
-
+ 
 <div id="comments" class="comments-area">
-
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-				$comment_count = get_comments_number();
-			?>
-		</h2><!-- .comments-title -->
-
-		<?php the_comments_navigation(); ?>
-
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				) );
-			?>
-		</ol><!-- .comment-list -->
-
-		<?php the_comments_navigation();
-
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) : ?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'the-gamerz' ); ?></p>
-		<?php
-		endif;
-
-	endif; // Check for have_comments().
-
-
-	?>
-    <div class="row comment">
-        <div class="col-md-1" style="float: left;margin-bottom: 15px;"><img alt=""
-                                                                            src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g"
-                                                                            srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x"
-                                                                            class="avatar avatar-32 photo"
-                                                                            height="40"
-                                                                            width="40"></div>
-        <div class="col-md-10">
-
-            <div id="comment_form">
-                <div><h4><i class="fa fa-comments" aria-hidden="true"></i>Comment</h4></div>
-                <div>
-                                            <textarea rows="10" name="comment" id="comment" class="textarea"
-                                                      placeholder="Enter Your Comment Here"></textarea>
-                </div>
-                <div>
-                    <input type="text" name="name" id="name" value="" class="textbox"
-                           placeholder="Name">
-                </div>
-                <div>
-                    <input type="email" name="email" id="email" value="" class="textbox"
-                           placeholder="Email">
-                </div>
-
-                <div class="comment-footer">
-
-                    <ul class="comments_ul">
-                        <li><img alt=""
-                                 src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g"
-                                 srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x"
-                                 class="avatar avatar-32 photo" height="32" width="32"
-                                 style="border-radius: 15px;"></li>
-                        <li><i class="fa fa-user-o" aria-hidden="true"></i>JS</li>
-                        <li><i class="fa fa-user-o" aria-hidden="true"></i>Apri 13th, 2017 12:26
-                        </li>
-                    </ul>
-
-                    <p class="comment_para">Any1 played it ready? Is it worth buying?</p>
-
-
-                    <ul class="comments_rate_ul">
-                        <li>Rate this comment</li>
-                        <li>0 <i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
-                        <li>0 <i class="fa fa-thumbs-down" aria-hidden="true"></i></li>
-                        <li><a href="#" class='comment-reply'>Reply</a></li>
-                    </ul>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+ 
+    <?php if ( have_comments() ) : ?>
+        <h2 class="comments-title">
+            <?php
+                printf( _nx( 'One thought on "%2$s"', '%1$s thoughts on "%2$s"', get_comments_number(), 'comments title', 'twentythirteen' ),
+                    number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+            ?>
+        </h2>
+ 
+        <ol class="comment-list">
+            <?php
+                wp_list_comments( array(
+                    'style'       => 'ol',
+                    'short_ping'  => true,
+                    'avatar_size' => 74,
+                ) );
+            ?>
+        </ol><!-- .comment-list -->
+ 
+        <?php
+            // Are there comments to navigate through?
+            if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
+        ?>
+        <nav class="navigation comment-navigation" role="navigation">
+            <h1 class="screen-reader-text section-heading"><?php _e( 'Comment navigation', 'twentythirteen' ); ?></h1>
+            <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'twentythirteen' ) ); ?></div>
+            <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'twentythirteen' ) ); ?></div>
+        </nav><!-- .comment-navigation -->
+        <?php endif; // Check for comment navigation ?>
+ 
+        <?php if ( ! comments_open() && get_comments_number() ) : ?>
+        <p class="no-comments"><?php _e( 'Comments are closed.' , 'twentythirteen' ); ?></p>
+        <?php endif; ?>
+ 
+    <?php endif; // have_comments() ?>
+ 
+    <?php comment_form(); ?>
+ 
 </div><!-- #comments -->

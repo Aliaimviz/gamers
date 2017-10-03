@@ -866,8 +866,8 @@ ul.social-media-footer li:last-child {
 
 .footer-widgets-2,
 .right-footer-div {
-    min-height: 240px;
-    max-height: 240px;
+    min-height: 246px;
+    max-height: 246px;
 }
 
 .right-footer-div a img {
@@ -881,6 +881,7 @@ ul.social-media-footer li:last-child {
 
 .right-footer-div {
     background: #4867aa;
+        display: inline-flex;
 }
 
 .buying-guide-image {
@@ -2696,10 +2697,10 @@ img {
         max-height: 155px;
     }
 
-    .textwidget.custom-html-widget img {
+    /*.textwidget.custom-html-widget img {
         width: 65%;
         margin-top: -60px;
-    }
+    }*/
 
     ul#buying-guide-side li > a {
         margin-left: 20%;
@@ -2932,6 +2933,24 @@ img {
         margin: 0;
     }
 
+    .post-bottom-desc {
+        color: #fff;
+        float: left;
+        width: 65% !important;
+    }
+    .post-bottom-desc-rating {
+        float: right;
+        width: 35% !important;
+        padding-top: 30px;
+    }
+    .game-rating-shows ul li:first-child img {
+    position: relative;
+ /*   top: 23px !important;*/
+    width: 100% !important;
+}
+.col-xs-6.col-sm-12.col-md-6.col-lg-6.right-footer-div a img {
+    width: 100% !important;
+}
 }
 
 @media all and (max-width: 530px) {
@@ -4156,9 +4175,6 @@ a.game-buy {
     width: 50px;
     display: block;
 }
-.game-img img {
-    width: 100%;
-}
 .ratings-main {
     border-top: 1px solid #000;
     margin-top: 17px;
@@ -4171,4 +4187,22 @@ a.game-buy {
 ul.product-ul {
     border-bottom: 0;
     margin-bottom: 20px;
+}
+.game-img img {
+    width: 100% !important;
+}
+.col-xs-6.col-sm-12.col-md-6.col-lg-6.right-footer-div a img {
+    margin-top: 0 !important;
+}
+span.rating-result-title {
+    float: left !important;
+}
+@media all and (max-width: 321px){
+    .post-bottom-desc-rating span {
+         width: 90px !important;   
+    }
+    .post-bottom-desc-rating span div {
+        line-height: 103px !important;
+        font-size: 27px !important;        
+    }
 }

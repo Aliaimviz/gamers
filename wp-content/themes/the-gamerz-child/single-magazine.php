@@ -96,11 +96,19 @@ $template = get_post_meta($post_id,'set_template',true);
 							
 									<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-									<?php the_content(); ?>
+									<?php the_content(); 
+									//comments_template( '', true ); 
+									?>
 								
-									<?php if ( comments_open() || get_comments_number() ) :
-										comments_template();
-									endif; ?>
+									<?php 
+										// If comments are open or we have at least one comment, load up the comment template.
+										 /*if ( comments_open() || get_comments_number() ) :
+										 	comments_template( '', true ); 
+										 endif;*/
+										 if ( comments_open() || get_comments_number() ) :
+												comments_template();
+											endif;
+									?>
 
 									<?php endwhile; ?>
 									<?php endif; ?>

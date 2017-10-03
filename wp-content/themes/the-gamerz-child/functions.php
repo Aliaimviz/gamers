@@ -357,3 +357,24 @@ function random_picture($atts) {
  $html .="</div></div></div>";
 return $html;
 }
+function wpbeginner_remove_comment_url($arg) {
+    $arg['url'] = '';
+    return $arg;
+}
+add_filter('comment_form_default_fields', 'wpbeginner_remove_comment_url');
+function my_remove_email_field_from_comment_form($fields) {
+    if(isset($fields['email'])) unset($fields['email']);
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'my_remove_email_field_from_comment_form');
+function my_remove_email_field_from_comment_forms($fields) {
+  //var_dump($fields);
+  //die();
+    /*if(isset($fields['author'])) unset($fields['author']);
+    return $fields;*/
+}
+//add_filter('comment_form_default_fields', 'my_remove_email_field_from_comment_forms');
+function wpse218025_remove_comment_author_link( $return, $author, $comment_ID ) {
+    return $author;
+}
+add_filter( 'get_comment_author_link', 'wpse218025_remove_comment_author_link', 10, 3 );

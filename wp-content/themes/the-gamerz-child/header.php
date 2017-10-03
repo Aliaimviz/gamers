@@ -21,6 +21,11 @@
 	<link rel="stylesheet" type="text/css" href="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/libraries/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/libraries/font-awesome/css/font-awesome.min.css">
 	<?php wp_head(); ?>
+	<style>
+	p.comment-form-author {
+    display: none;
+	}
+	</style>
 </head>
 
 <body <?php body_class(); ?>>
