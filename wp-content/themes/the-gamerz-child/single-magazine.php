@@ -76,12 +76,20 @@ $template = get_post_meta($post_id, 'set_template', true);
                             </ul>
                         </div>
                     </div>
-                    <?php $user_id = get_current_user_id(); ?>
+                    <?php $user_id = get_current_user_id(); 
+                    $post_ids = get_the_ID();
+                     $pst_count = count(get_post_meta($post_ids,'post_likes',true));
+
+                    ?>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 social-btns">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bdr" id="heart">
+                            <div class="Success_login_counter" style="display:none;">
+                              
+                            </div>
+
                             <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_id; ?>" class="likes">
                                 <i class="fa fa-heart" aria-hidden="true"></i>
-                                <span>Like</span>
+                                <span>Like [<?php echo $pst_count; ?>]</span>
                             </a>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

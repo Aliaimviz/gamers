@@ -18,18 +18,31 @@ class inner_pages_shortcodes {
 		
     }
     function search_likes_chartes(){
-    	$user_id = $_POST[""];
-    	$post_ids = $_POST[""];
+    	$post_ids = $_POST["counter"];
+    	$user_id = $_POST["user_id"];
+
+    	$arr = array();
     	$likes_post_meta = get_post_meta($post_ids,'post_likes',true);
-    	if(){
+    	if(!empty($likes_post_meta)){
 
+			if (in_array($user_id, $likes_post_meta))
+			{
+			  echo "alreay like this magazine";
+			}
+			else
+			{
+			  $likes_post_meta[] = $user_id;
+			  update_post_meta($post_ids,'post_likes',$likes_post_meta);  
+			}
     	}else{
-
+    		$arr[] = $user_id;
+    		update_post_meta($post_ids,'post_likes',$arr);
     	}
     	die();
     }
     function search_video_based_on_character_by_cat(){
     	$terms = $_POST["favorite"];
+
     	if(!empty($terms)){
     		$args = array(
 					'post_type' => 'video',
@@ -154,25 +167,32 @@ class inner_pages_shortcodes {
 							});
     					});
     					jQuery(document).on("click",".likes",function(){
-    						var counter = jQuery(this).attr("id");
-    						jQuery.ajax({
+    						var counter_ids = jQuery(this).attr("id");
+    						var user_ids = jQuery(this).attr("data-user-id");
+    						if(user_ids!=""){
+    							jQuery.ajax({
 									url : "'.site_url().'/wp-admin/admin-ajax.php",
 									type : "post",
 									data : {
 									action : "search_likes_chartes",
-									counter : counter
+									counter : counter_ids,
+									user_id : user_ids
 									},
 									success : function( response ) {
-									        
-									/* jQuery(".show_cats_vido").html(response);
-									jQuery(".loader_ajax").hide(); */
+									    
+									jQuery(".addthis_button_compact").html(response);
+									jQuery(".loader_ajax").hide(); 
 
 									},
 									 error: function(errorThrown){
 									
 									console.log(errorThrown);
 									}
-							});
+								});
+    						}else{
+    							alert("First login then like this game");
+    						}
+    						
     					});
     				});
     			</script>';
@@ -360,4 +380,14 @@ class inner_pages_shortcodes {
             }
 
 
-          
+            wp_reset_postdata();
+        } else {
+            // no posts found
+        }
+        return $html;
+    }
+
+    //buying guides page shortcodes slider end
+}
+
+?>

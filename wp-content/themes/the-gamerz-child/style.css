@@ -5008,3 +5008,28 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     color: #242424;
     font-size: 14px;
 }
+/*Game Database Page Css here*/
+.new_form {
+
+}
+.new_form #filter-panel .panel .panel-body form .form-group input.change_width{
+    width: 100%!important;
+    background-color:#f0f0f0;
+    color:#666666;
+}
+.new_form #filter-panel .panel .panel-body form .form-group input[type="text"]::placeholder{
+    color:#666666;
+}
+.new_form #filter-panel .panel .panel-body form .form-group select.sml-select{
+    width: 100%!important;
+    background-color:#f0f0f0;
+    color:#666666;
+}
+.sort-select{
+    margin-right: 80px;
+    margin-top:30px;
+}
+.sort-select label{
+    color:#666666;
+    margin-right: 10px;
+}
