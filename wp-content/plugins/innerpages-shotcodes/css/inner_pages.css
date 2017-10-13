@@ -1,0 +1,182 @@
+@media all and (max-width: 768px) {
+                                        .content-single-magazine .row{
+                                            padding:5px 0px !important;
+                                            margin:0px auto;
+                                        }
+                                        body #itemslider .carousel-control.left {
+                                            background: none;
+                                            left: -10px;
+                                            top: 30%;
+                                            z-index: 999999;
+                                            margin-right: 0px;
+                                        }
+                                        body #itemslider .carousel-control.right {
+                                            background: none;
+                                            right: -10px;
+                                            top: 30%;
+                                            z-index: 999999;
+                                        }
+                                        body .team_columns_item_image {
+                                            max-width: 90% !important;
+                                            margin: 0px auto !important;
+                                            float: none !important;
+                                            display: block;
+                                            position: relative;
+                                            left: 0px !important;
+                                            right: 0px !important;
+                                            width: 100% !important;
+                                            padding: 0px;
+                                        }
+                                        body .carousel-showmanymoveone .cloneditem-1{
+                                            display:block;
+                                            opacity: 0.3;
+                                            position: absolute;
+                                            top: 0px;
+                                            right: -170px;
+                                        }
+                                        body .carousel-showmanymoveone .cloneditem-2,
+                                        body .carousel-showmanymoveone .cloneditem-3,
+                                        body .carousel-showmanymoveone .cloneditem-4
+                                        {
+                                            display:none;
+                                        }
+                                        .carousel-showmanymoveone .carousel-inner > .active.left,
+                                        .carousel-showmanymoveone .carousel-inner > .prev {
+                                            left: 0%;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .active.right,
+                                        .carousel-showmanymoveone .carousel-inner > .next {
+                                            left: 50%;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .left,
+                                        .carousel-showmanymoveone .carousel-inner > .prev.right,
+                                        .carousel-showmanymoveone .carousel-inner > .active {
+                                            left: 0;
+                                        }
+                                        .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
+                                            display: block;
+                                        }
+                                    }
+                                    .team_columns_item_image:hover .row {
+                                        border-bottom: 5px solid #3e8091;
+                                        margin: 0px 0px;
+                                    }
+
+                                    .team_columns_item_image .row {
+                                        border-bottom: 5px solid #cacaca;
+                                        margin: 0px 0px;
+                                    }
+
+                                    .carousel-showmanymoveone .cloneditem-1,
+                                    .carousel-showmanymoveone .cloneditem-2,
+                                    .carousel-showmanymoveone .cloneditem-3,
+                                    .carousel-showmanymoveone .cloneditem-4,
+                                    .carousel-showmanymoveone .cloneditem-5,
+                                    .carousel-showmanymoveone .cloneditem-6,
+                                    .carousel-showmanymoveone .cloneditem-7,
+                                    .carousel-showmanymoveone .cloneditem-8,
+                                    .carousel-showmanymoveone .cloneditem-9 {
+                                        display: none;
+
+                                    }
+
+                                    @media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
+
+                                        .carousel-showmanymoveone .carousel-inner > .item.active.right,
+                                        .carousel-showmanymoveone .carousel-inner > .item.next {
+                                            -webkit-transform: translate3d(50%, 0, 0);
+                                            transform: translate3d(50%, 0, 0);
+                                            left: 0;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .item.active.left,
+                                        .carousel-showmanymoveone .carousel-inner > .item.prev {
+                                            -webkit-transform: translate3d(-50%, 0, 0);
+                                            transform: translate3d(-50%, 0, 0);
+                                            left: 0;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .item.left,
+                                        .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+                                        .carousel-showmanymoveone .carousel-inner > .item.active {
+                                            -webkit-transform: translate3d(0, 0, 0);
+                                            transform: translate3d(0, 0, 0);
+                                            left: 0;
+                                        }
+                                    }
+
+                                    @media all and (min-width: 992px) {
+                                        .carousel-showmanymoveone .carousel-inner > .active.left,
+                                        .carousel-showmanymoveone .carousel-inner > .prev {
+                                            left: -32%;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .active.right,
+                                        .carousel-showmanymoveone .carousel-inner > .next {
+                                            left: 32%;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .left,
+                                        .carousel-showmanymoveone .carousel-inner > .prev.right,
+                                        .carousel-showmanymoveone .carousel-inner > .active {
+                                            left: 0;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner .cloneditem-1,
+                                        .carousel-showmanymoveone .carousel-inner .cloneditem-2 {
+                                            display: block;
+                                        }
+                                    }
+
+                                    @media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
+                                        .carousel-showmanymoveone .carousel-inner > .item.active.right,
+                                        .carousel-showmanymoveone .carousel-inner > .item.next {
+                                            -webkit-transform: translate3d(30%, 0, 0);
+                                            transform: translate3d(30%, 0, 0);
+                                            left: 0;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .item.active.left,
+                                        .carousel-showmanymoveone .carousel-inner > .item.prev {
+                                            -webkit-transform: translate3d(-30%, 0, 0);
+                                            transform: translate3d(-30%, 0, 0);
+                                            left: 0;
+                                        }
+
+                                        .carousel-showmanymoveone .carousel-inner > .item.left,
+                                        .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+                                        .carousel-showmanymoveone .carousel-inner > .item.active {
+                                            -webkit-transform: translate3d(0, 0, 0);
+                                            transform: translate3d(0, 0, 0);
+                                            left: 0;
+                                        }
+                                    }
+
+                                    .team_columns_item_image {
+                                        width: 30% !important;
+                                    }
+
+                                    .carousel-showmanymoveone .cloneditem-3 {
+                                        display: block;
+                                        position: absolute;
+                                        top: 0px;
+                                        right: -200px;
+                                        opacity: 0.3;
+
+                                    }
+
+                                    #itemslider .carousel-control.right {
+                                        background: none;
+                                        right: 95px;
+                                        top: 30%;
+                                        z-index: 999999;
+                                    }
+
+                                    #itemslider .carousel-control.left {
+                                        background: none;
+                                        left: 0px;
+                                        top: 30%;
+                                        z-index: 999999;
+                                    }

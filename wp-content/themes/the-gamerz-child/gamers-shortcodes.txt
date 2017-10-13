@@ -1,0 +1,29 @@
+1.Magazine shortcode [Magazine series="1-5" category="6" style="grid" class="test"]
+
+2.[related_articles] use in magazine detail page in sidebar
+
+3.[accessorie] use in magazine detail page in sidebar
+
+4.[picture] => [videos] home page videos tabing
+
+Magazine detail page content shortcodes
+
+1.[label label="custom anchor"][/label] for add a new link in sidebar and a content section in main content
+
+2.[overview_section1 background="#000" content="your content here" title="your title here"] section with date and background (ie: overview)
+
+3.[without-backgrounds contents="your content here" title="your title here"] => [section]section without date and first letter of paragraph is big
+
+4.left quote [layout_posts half="left" content="your content here" writer="john" class=""] => [quote_half]
+5.right quote [layout_posts half="left" content="your content here" writer="john" class="right-quote"] => [quote_half]
+
+6.full quote [layout_posts full="full" content="your content here" writer="john" class=""] => [quote_full]
+
+7.[banner-section background-color="color code here without hash" image="your image url here" font-color="font color here without #" content="your content here" opacity="0.6" class="class here"] [section_bg]
+
+
+
+
+
+
+
