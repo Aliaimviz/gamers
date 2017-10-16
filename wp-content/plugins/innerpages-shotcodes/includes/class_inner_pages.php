@@ -15,28 +15,103 @@ class inner_pages_shortcodes {
 		add_action('wp_ajax_search_likes_chartes', array($this,'search_likes_chartes'));
 		add_action('wp_ajax_nopriv_search_likes_chartes', array($this,'search_likes_chartes'));
 		
+		add_shortcode("show-all-games",array($this,"show_games_all"));
+		add_action('wp_ajax_search_likes_chartes_dislikes', array($this,'search_likes_chartes_dislikes'));
+		add_action('wp_ajax_nopriv_search_likes_chartes_dislikes', array($this,'search_likes_chartes_dislikes'));
 		
+    }
+    function search_likes_chartes_dislikes(){
+    	$post_ids = $_POST["counter"];
+    	$user_id = $_POST["user_id"];
+		$arr = array();
+    	$likes_post_meta = get_post_meta($post_ids,'post_likes_more',true);
+    	if(!empty($likes_post_meta)){
+    		foreach($likes_post_meta as $dislike){
+    			if($dislike!=$user_id){
+    				$arr[] = $dislike;
+    			}else{
+    				continue;
+    			}
+    		}
+    		update_post_meta($post_ids,'post_likes_more',$arr);
+    		echo count(get_post_meta($post_ids,'post_likes_more',true));
+    	}    	
+    	die();
+    }
+    function show_games_all(){
+    	$html ='';
+    	$args = array(
+					'post_type' => 'game',
+					'post_status' => 'publish',
+					'posts_per_page' => -1
+				);
+		$query = new WP_Query( $args );
+		if ( $query->have_posts() ) {
+		
+			while ( $query->have_posts() ) {
+					$query->the_post();
+					$posts = $query->posts;
+					//echo $posts[0]->post_content;
+					$contents = substr($posts[0]->post_content, 0, 80);
+					$post_id = get_the_ID();
+					$title = get_the_title($post_id);
+					$featured_img_url = get_the_post_thumbnail_url($post_id, 'full');
+					//$cotent = get_the_content($post_id);
+					$term_list = wp_get_post_terms($post_id, 'game-cat', array("fields" => "all"));
+
+					$html .='
+							<li class="media">
+                            <div class="pull-left">
+                                <a href="#">
+                                    <img class="media-object" src="'.$featured_img_url.'" alt="...">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">'.$title.'</h4>';
+                                if(!empty($term_list)){
+                                	$i=0;
+                                	foreach($term_list as $list){
+                                		//if($i==0){
+                                			//$html .=$list->name;
+                                		// }
+                                		// else{
+                                			$html .=$list->name.' > ';
+                                		//}
+                                		$i++;
+                                	}
+                                }
+                                
+                                $html .='<p>'.$contents.'</p>
+                            </div>
+                        </li>
+							';
+			}
+		}
+    	return $html;
     }
     function search_likes_chartes(){
     	$post_ids = $_POST["counter"];
     	$user_id = $_POST["user_id"];
 
     	$arr = array();
-    	$likes_post_meta = get_post_meta($post_ids,'post_likes',true);
+    	$likes_post_meta = get_post_meta($post_ids,'post_likes_more',true);
     	if(!empty($likes_post_meta)){
 
 			if (in_array($user_id, $likes_post_meta))
 			{
-			  echo "alreay like this magazine";
+			  echo "alreay like this magazine <br>";
+			  echo count(get_post_meta($post_ids,'post_likes_more',true));
 			}
 			else
 			{
 			  $likes_post_meta[] = $user_id;
-			  update_post_meta($post_ids,'post_likes',$likes_post_meta);  
+			  update_post_meta($post_ids,'post_likes_more',$likes_post_meta);  
+			  echo count(get_post_meta($post_ids,'post_likes_more',true));
 			}
     	}else{
     		$arr[] = $user_id;
-    		update_post_meta($post_ids,'post_likes',$arr);
+    		update_post_meta($post_ids,'post_likes_more',$arr);
+    		echo count(get_post_meta($post_ids,'post_likes_more',true));
     	}
     	die();
     }
@@ -166,10 +241,10 @@ class inner_pages_shortcodes {
 									}
 							});
     					});
-    					jQuery(document).on("click",".likes",function(){
+    					jQuery(document).on("click",".likes_btn",function(){
     						var counter_ids = jQuery(this).attr("id");
     						var user_ids = jQuery(this).attr("data-user-id");
-    						if(user_ids!=""){
+    							jQuery(".loader_show").show();
     							jQuery.ajax({
 									url : "'.site_url().'/wp-admin/admin-ajax.php",
 									type : "post",
@@ -180,8 +255,9 @@ class inner_pages_shortcodes {
 									},
 									success : function( response ) {
 									    
-									jQuery(".addthis_button_compact").html(response);
-									jQuery(".loader_ajax").hide(); 
+									jQuery(".counter_likes").html(response);
+									jQuery(".loader_show").hide(); 
+									//location.reload();
 
 									},
 									 error: function(errorThrown){
@@ -189,10 +265,31 @@ class inner_pages_shortcodes {
 									console.log(errorThrown);
 									}
 								});
-    						}else{
-    							alert("First login then like this game");
-    						}
-    						
+    					});
+    					jQuery(document).on("click",".dislikes",function(){
+    						var counter_ids = jQuery(this).attr("id");
+    						var user_ids = jQuery(this).attr("data-user-id");
+								jQuery(".loader_show").show();
+    							jQuery.ajax({
+									url : "'.site_url().'/wp-admin/admin-ajax.php",
+									type : "post",
+									data : {
+									action : "search_likes_chartes_dislikes",
+									counter : counter_ids,
+									user_id : user_ids
+									},
+									success : function( response ) {
+									    
+									jQuery(".counter_likes").html(response);
+									jQuery(".loader_show").hide(); 
+									//location.reload();
+
+									},
+									 error: function(errorThrown){
+									
+									console.log(errorThrown);
+									}
+								});
     					});
     				});
     			</script>';

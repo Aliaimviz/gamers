@@ -68,7 +68,9 @@ get_header();
         <div class="row">
             <div class="col-xs-12">
                 <ul class="media-list result_list">
-                    <?php for ($a = 1; $a <= 10; $a++) { ?>
+                    <?php 
+                    echo do_shortcode('[show-all-games]');
+                    /*for ($a = 1; $a <= 10; $a++) { ?>
                         <li class="media">
                             <div class="pull-left">
                                 <a href="#">
@@ -82,7 +84,7 @@ get_header();
                             </div>
                         </li>
                         <?php
-                    }
+                    }*/
                     ?>
 
                 </ul>

@@ -55,37 +55,7 @@ global $post;
                                     <a href="#" class="list-group-item"><input type="checkbox"> 1-6m <span>[880]</span></a>
                                     <a href="#" class="list-group-item"><input type="checkbox"> 2-10m <span>[60]</span></a>
                                 </div> 
-<!--                                <a href="#demo2" class="list-group-item list-group-item strong type-inner" data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-book"></i> Readability <i class="fa fa-caret-down"></i></a>
-                                <div class="collapse list-group-submenu" id="demo2">
-                                    <a href="#" class="list-group-item"><input type="checkbox">  1</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  2</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  3</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  4</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  5</a>
-                                </div>
-                                <a href="#demo4" class="list-group-item list-group-item strong type-inner"  data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-language"></i> Languages <i class="fa fa-caret-down"></i></a>
-                                <div class="collapse list-group-submenu" id="demo4">
-                                    <a href="#" class="list-group-item"><input type="checkbox">  English</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  Chinese</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  French</a>
-                                    <a href="#SubSubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu1"> 3 more <i class="fa fa-caret-down"></i></a>
-                                    <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-                                        <a href="#" class="list-group-item"><input type="checkbox">  Russian</a>
-                                        <a href="#" class="list-group-item"><input type="checkbox">  Urdu</a>
-                                        <a href="#" class="list-group-item"><input type="checkbox">  Vietnamese</a>
-                                    </div>
-                                </div>
-                                <a href="#demo5" class="list-group-item list-group-item strong type-inner"  data-toggle="collapse" data-parent="#MainMenu"><i class="fa fa-cubes"></i>  Content Collections <i class="fa fa-caret-down"></i></a>
-                                <div class="collapse list-group-submenu" id="demo5">
-                                    <a href="#" class="list-group-item"><input type="checkbox">  ARKive</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  BrainPOP Junior</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  CK-12</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  Khan Academy</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  Library of Congress</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  NCTM Illuminations</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  PBS</a>
-                                    <a href="#" class="list-group-item"><input type="checkbox">  Teach Engineering</a>
-                                </div>-->
+
                             </div>
                         </div>
                     </div>

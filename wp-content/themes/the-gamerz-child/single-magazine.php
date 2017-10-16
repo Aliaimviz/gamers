@@ -78,18 +78,68 @@ $template = get_post_meta($post_id, 'set_template', true);
                     </div>
                     <?php $user_id = get_current_user_id(); 
                     $post_ids = get_the_ID();
-                     $pst_count = count(get_post_meta($post_ids,'post_likes',true));
+                     $post_counts = get_post_meta($post_ids,'post_likes_more',true);
+                     if(empty($post_counts)){
+                        $counts = 0;
+                     }else{
+                        $counts = count(get_post_meta($post_ids,'post_likes_more',true));
+                     }
+                     //print_r($pst_count);
+                     $post_likes_user = get_post_meta($post_ids,'post_likes_more',true);
+                     
+                     function getUserIP()
+                      {
+                          $client  = @$_SERVER['HTTP_CLIENT_IP'];
+                          $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+                          $remote  = $_SERVER['REMOTE_ADDR'];
 
+                          if(filter_var($client, FILTER_VALIDATE_IP))
+                          {
+                              $ip = $client;
+                          }
+                          elseif(filter_var($forward, FILTER_VALIDATE_IP))
+                          {
+                              $ip = $forward;
+                          }
+                          else
+                          {
+                              $ip = $remote;
+                          }
+
+                          return $ip;
+                      }
+
+
+                     $user_ip = getUserIP();
                     ?>
+                    <div class="loader_show" style="display:none;"><img src="<?php echo site_url(); ?>/ajax-loader.gif"/></div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 social-btns">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bdr" id="heart">
                             <div class="Success_login_counter" style="display:none;">
                               
                             </div>
-
-                            <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_id; ?>" class="likes">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <span>Like [<?php echo $pst_count; ?>]</span>
+                            <?php
+                            if(!empty($post_likes_user)){
+                              if(in_array($user_ip,$post_likes_user)){
+                              ?>
+                              
+                               <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="dislikes"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                              <?php
+                            }else{
+                              ?>
+                             <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart" aria-hidden="true"></i>
+                              <?php
+                              }
+                            }else{
+                              ?>
+                              <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart" aria-hidden="true"></i>
+                              <?php
+                            }
+                            
+                            ?>
+                            
+                                
+                                <span>Total <span class="counter_likes"><?php echo $counts; ?></span></span>
                             </a>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

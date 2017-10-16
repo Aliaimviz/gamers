@@ -38,22 +38,7 @@ global $post;
                             <div class="list-group panel">
                                 <a class="list-group-item list-group-item strong text-center type-box" data-toggle="collapse"> Type <i class="fa fa-caret-down"></i></a>
                                 <?php echo do_shortcode('[show-side-bar-video-filter]'); ?>
-                                <!-- <a href="#demo1" class="list-group-item list-group-item-success strong type-inner" data-toggle="collapse" data-parent="#MainMenu">cable length <i class="fa fa-caret-down"></i></a>
-                                <div class="collapse list-group-submenu" id="demo1">
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-2m <span>[50]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-4m <span>[50]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-6m <span>[90]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-6m <span>[880]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 2-10m <span>[60]</span></a>
-                                </div> 
-                                <a href="#demo2" class="list-group-item list-group-item-success strong type-inner" data-toggle="collapse" data-parent="#MainMenu">Dpi <i class="fa fa-caret-down"></i></a>
-                                <div class="collapse list-group-submenu" id="demo2">
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-2m <span>[50]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-4m <span>[50]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-6m <span>[90]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 1-6m <span>[880]</span></a>
-                                    <a href="#" class="list-group-item"><input type="checkbox"> 2-10m <span>[60]</span></a>
-                                </div>  -->
+                                
                             </div>
                         </div>
                     </div>
@@ -79,20 +64,7 @@ global $post;
                         <div class="show_cats_vido clear">
                         <?php 
                         echo do_shortcode('[gammer-videos]');
-                        /*for ($a = 0; $a <= 11; $a++) { ?>
-                            <div class="col-xs-3">
-                                <div class="video-box">
-                                    <iframe width="100%" height="150" src="https://www.youtube.com/embed/r8kE7rSzfQs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                    <h2>this is video title</h2>
-                                    <div class="video-description">
-                                        <h6>doh bros</h6>
-                                        <h6>32 min visul</h6>
-                                        <h6>1 anno fa</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }*/
+                        
                         ?>
                         </div>
                         <img src="<?php echo site_url(); ?>/ajax-loader.gif" class="loader_ajax" style="display:none;">
