@@ -26,7 +26,6 @@ get_header();
                                     Lorem Ipsum is simply dummy text of the printing and typesettin...
                                 </p>
                             </div>
-
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix next-prev">
                                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

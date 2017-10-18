@@ -67,12 +67,12 @@ class Nfr_Menu_Walker extends Walker_Nav_Menu {
 
         $id_field = $this->db_fields['id'];
 
-        //display this element
+//display this element
         if (
                 is_array($args[0]))
             $args[0]['has_children'] = !empty($children_elements[$element->$id_field]);
 
-        //Adds the 'parent' class to the current item if it has children 
+//Adds the 'parent' class to the current item if it has children 
 
         if (!empty($children_elements[$element->$id_field])) {
             array_push($element->classes, 'parent');
@@ -85,14 +85,14 @@ class Nfr_Menu_Walker extends Walker_Nav_Menu {
 
         $id = $element->$id_field;
 
-        // descend only when the depth is right and there are childrens for this element
+// descend only when the depth is right and there are childrens for this element
         if (($max_depth == 0 || $max_depth > $depth + 1) && isset($children_elements[$id])) {
 
             foreach ($children_elements[$id] as $child) {
 
                 if (!isset($newlevel)) {
                     $newlevel = true;
-                    //start the child delimiter
+//start the child delimiter
                     $cb_args = array_merge(array(&$output, $depth), $args);
                     call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
                 }
@@ -102,12 +102,12 @@ class Nfr_Menu_Walker extends Walker_Nav_Menu {
         }
 
         if (isset($newlevel) && $newlevel) {
-            //end the child delimiter
+//end the child delimiter
             $cb_args = array_merge(array(& $output, $depth), $args);
             call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
         }
 
-        //end this element
+//end this element
         $cb_args = array_merge(array(& $output, $element, $depth), $args);
         call_user_func_array(array(&$this, 'end_el'), $cb_args);
     }
@@ -329,7 +329,7 @@ function random_picture($atts) {
             $url_video = get_post_meta($post_id, 'video_url', true);
             $term_list = wp_get_post_terms($post_id, 'video-cat', array("fields" => "names"));
             $term_lists = wp_get_post_terms($post_id, 'video-cat', array("fields" => "all"));
-            //print_r($term_lists);
+//print_r($term_lists);
             $term_lists_id = $term_lists[0]->slug;
             if ($j == 0) {
                 $html .= '<div id="' . $post_id . '" class="tab-pane active">
@@ -373,8 +373,8 @@ function my_remove_email_field_from_comment_form($fields) {
 
 //add_filter('comment_form_default_fields', 'my_remove_email_field_from_comment_form');
 function my_remove_email_field_from_comment_forms($fields) {
-    //var_dump($fields);
-    //die();
+//var_dump($fields);
+//die();
     /* if(isset($fields['author'])) unset($fields['author']);
       return $fields; */
 }
@@ -395,11 +395,76 @@ function mycustomScript() {
     wp_enqueue_style('owl-Carousel', get_stylesheet_directory_uri() . '/assets/css/owl.carousel.css', array(), 10.0, 'all');
     wp_enqueue_style('Owl-theme', get_stylesheet_directory_uri() . '/assets/css/owl.theme.css', array(), 10.0, 'all');
     wp_enqueue_style('font-style-sheet', get_stylesheet_directory_uri() . '/assets/fonts/font-style-sheet.css', array(), 10.0, 'all');
+    wp_enqueue_style('jquery-validation-css', get_stylesheet_directory_uri() . '/assets/css/validationEngine.jquery.css', array(), 10.0, 'all');
 
     wp_enqueue_script('Js-Owl-carousel-min', get_stylesheet_directory_uri() . '/assets/js/owl.carousel.js', array(), 10.0, true);
+    wp_enqueue_script('Js-validation-js', get_stylesheet_directory_uri() . '/assets/js/jquery.validationEngine.js', array(), 10.0, true);
+    wp_enqueue_script('Js-validation-en', get_stylesheet_directory_uri() . '/assets/js/jquery.validationEngine-en.js', array(), 10.0, true);
+    wp_enqueue_script('Js-main', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), 10.0, true);
+
+    wp_localize_script('Js-main', 'configs', array(
+        'theme_uri' => get_template_directory_uri(),
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
 }
 
 add_action('wp_enqueue_scripts', 'mycustomScript');
 
+function custom_user_registor() {
+    global $wpdb;
+    $user_name = $_POST['user_name'];
+    $user_email = $_POST['user_email'];
+    $user_pass = $_POST['pass'];
+
+    $exits_username = username_exists($user_name);
+    $exits_email = email_exists($user_email);
+    if ($exits_username || $exits_email) {
+        echo"already exits";
+    } else {
+        $userdata = array(
+            'user_login' => $user_name,
+            'user_email' => $user_email,
+            'user_pass' => $user_pass,
+            'firstname' => $user_name,
+        );
+        $user_id = wp_insert_user($userdata);
+        $user = new WP_User($user_id);
+    }
+}
+
+add_action('wp_ajax_register_user', 'custom_user_registor');
+add_action('wp_ajax_nopriv_register_user', 'custom_user_registor');
+
+function custom_user_review() {
+    global $wpdb;
+    $game_ID = $_POST['Post_ID'];
+    $User_ID = $_POST['user_ID'];
+    $Msg = $_POST['msg'];
+    $user_Name = get_user_by('id', $User_ID);
+    $name = $user_Name->user_login;
+    if (!empty($Msg)) {
+        $my_post = array(
+            'post_author' => $User_ID,
+            'post_parent' => $game_ID,
+            'post_title' => wp_strip_all_tags($name),
+            'post_type' => 'review',
+            'post_status' => 'publish',
+            'post_content' => $Msg
+        );
+        $post_ID = wp_insert_post($my_post);
+        if (!empty($post_ID)) {
+            wp_set_post_terms($post_ID, 39, 'reviews-category');
+            update_post_meta($post_ID, 'wpcf-game-id', $game_ID);
+            update_post_meta($post_ID, 'wpcf-user-id', $User_ID);
+        }
+    } else {
+        
+    }
+
+    die();
+}
+
+add_action('wp_ajax_user_review', 'custom_user_review');
+add_action('wp_ajax_nopriv_user_review', 'custom_user_review');
 
 

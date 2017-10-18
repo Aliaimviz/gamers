@@ -68,7 +68,15 @@ img.custom-logo {
     padding-left:0px!important;
     padding-right:0px!important;
 }
-
+.float-left{
+    float:left!important;
+}
+.float-right{
+    float:right!important;
+}
+.clear-fix{
+    clear:both;
+}
 .header-panel input,
 .header-panel select,
 .header-panel button {
@@ -2107,7 +2115,7 @@ ul#buying-guide-side {
 }
 
 ul#buying-guide-side li {
-    padding: 0 16px;
+    padding: 0 0px;
     border-bottom: 1px dotted #a8a8a8;
 }
 
@@ -2139,8 +2147,11 @@ ul#buying-guide-side li h3 {
 ul#buying-guide-side li p {
     display: inline-block;
     margin: 12px 0;
+    width:100%;
 }
-
+ul#buying-guide-side li:last-child{
+    border-bottom: 0px dotted #a8a8a8;
+}
 .sp-bottom-thumbnails {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -2433,7 +2444,7 @@ ol.comment-list {
     DISPLAY: NONE;
 }
 img {
-    max-width: 100%;
+    /*    max-width: 100%;*/
 }
 
 @media all and (max-width: 991px) {
@@ -5158,4 +5169,177 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 
 .similar-product .similar-products ul li h4{
     margin-top:0px;
+}
+
+/*Reviews page css here*/
+.write-a-review h2{
+    font-weight: bold;
+    font-family: 'Raleway';
+    color:#000000!important;
+    font-size:20px;
+}
+.write-a-review h6 span{
+    display:block;
+    float:left;
+    font-family: 'Raleway';
+    font-weight: normal;
+    font-size:14px;
+    color:#666666;
+
+}
+.stare-likes{
+    display:block;
+    float:left;
+    margin-left:10px;
+}
+.review-form{
+    margin-top: 28px!important;
+}
+.review-form .form-group textarea{
+    font-family: 'Raleway';
+    font-weight: normal;
+    font-size:16px;
+    resize:unset;
+    border-radius:0px;
+    color:#666666;
+}
+.review-form .form-group button{
+    font-family: 'Raleway';
+    font-weight: bold;
+    background-color:#b1bb1a;
+    color:#000000;
+    font-size:16px;
+    text-transform: uppercase;
+    border-radius: 0px;
+    border:0px;
+    padding:12px 30px; 
+}
+.critic_reviews .panel-default{
+    border-radius: 0px!important;
+}
+.critic_reviews .panel-default .panel-heading .panel-title{
+    font-family: 'Raleway';
+    font-weight: bold;
+    color:#ffffff;
+    font-size:20px;
+    text-transform:uppercase;
+}
+.critic_reviews .panel-default .panel-body{
+    padding:0px;
+    background-color: #dfdfdf!important;
+}
+.critic_reviews .panel-default .panel-heading{
+    background-color: #242424;
+    border-radius: 0px;
+    padding: 21px 37px;
+}
+.reviews_box ul{
+    border: none!important;
+    border-right: 1px solid #b4b4b4!important;
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+.reviews_box ul li{
+    padding: 22px 40px!important;
+    border:0px!important; 
+}
+.reviews_box ul#buying-guide-side li > div > span {
+    float: left;
+    width: 9%!important;
+}
+.reviews_box ul#buying-guide-side li > div > div {
+    float: left;
+    width: 80%;
+    margin-left: 20px;
+}
+.reviews_box ul#buying-guide-side li a{
+    font-family: 'Raleway';
+    border-radius: 0px;
+    background-color: #242424;
+    font-size: 14px;
+    padding: 10px 30px;
+}
+.reviews_box ul.border-right{
+    border-right:0px!important;
+}
+/*user review*/
+
+.user_review .panel-default{
+    border-radius: 0px!important;
+}
+.user_review .panel-default .panel-heading{
+    background-color: #ffb400!important;
+    border-radius: 0px;
+    padding: 21px 37px;
+}
+.user_review .panel-default .panel-heading .panel-title{
+    font-family: 'Raleway';
+    font-weight: bold;
+    color:#010101;
+    font-size:20px;
+    text-transform:uppercase;
+}
+
+.user_review .panel-default .panel-body{
+    padding:0px;
+    background-color: #242424!important;
+}
+.user_review .panel-default .panel-heading{
+    background-color: #242424;
+    border-radius: 0px;
+    padding: 21px 37px;
+}
+.user_reviews_box ul{
+    border: none!important;
+    border-right: 1px solid #b4b4b4!important;
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+    background-color:#242424!important;
+}
+.user_reviews_box ul li{
+    padding: 22px 40px!important;
+    border:0px!important; 
+}
+.user_reviews_box ul#buying-guide-side li > div > span {
+    float: left;
+    width: 9%!important;
+}
+.user_reviews_box ul#buying-guide-side li > div > div {
+    float: left;
+    width: 80%;
+    margin-left: 20px;
+}
+.user_reviews_box ul#buying-guide-side li > div > div h3.name-title{
+    color:#ffffff!important;
+}
+.user_reviews_box ul#buying-guide-side li > div > div span{
+    color:#ffffff!important;
+}
+.user_reviews_box ul#buying-guide-side li p{
+    color:#ffffff!important;
+}
+.user_reviews_box ul#buying-guide-side li a{
+    font-family: 'Raleway';
+    border-radius: 0px;
+    background-color: #242424;
+    font-size: 14px;
+    padding: 10px 30px;
+}
+.user_reviews_box ul.border-right{
+    border-right:0px!important;
+}
+
+
+/*GAME UPLOAD*/
+.account-system h2{
+
+}
+.account-system h3{
+
+}
+.account-system h3 a{
+    display:block;
+    color:#c5161d;
+    font-size:14px;
+
 }

@@ -417,81 +417,53 @@ global $post;
                                             <section id="custom_html-19" class="widget_text widget widgets widget_custom_html">
                                                 <div class="textwidget custom-html-widget black-colum">
                                                     <div class="two-third">
-                                                        <h2>user reviews <span><a href="#">Write A Review</a></span></h2>
+                                                        <?php
+                                                        $id = $post->ID;
+                                                        ?>
+                                                        <h2>user reviews <span><a href="<?php echo add_query_arg('post_ID', $id, get_permalink(685)); ?>">Write A1 Review</a></span></h2>
                                                     </div>
                                                     <ul id="buying-guide-side">
-                                                        <li>
-                                                            <div>
-                                                                <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
+                                                        <?php
+                                                        $game_ID = get_post_meta($post->ID, 'wpcf-game-id', true);
+                                                        $User_ID = get_post_meta($post->ID, 'wpcf-user-id', true);
+                                                        $args = array(
+                                                            'post_type' => 'review',
+                                                            'posts_per_page' => 6,
+                                                            'order' => 'DESC',
+                                                            'tax_query' => array(
+                                                                array(
+                                                                    'taxonomy' => 'reviews-category',
+                                                                    'field' => 'slug',
+                                                                    'terms' => 'user-reviews',
+                                                                )
+                                                            ),
+//                                                            'meta_query' => array(
+//                                                                'relation' => 'OR', // Optional, defaults to "AND"
+//                                                                array(
+//                                                                    'key' => $game_ID,
+//                                                                    'value' => $User_ID,
+//                                                                    'compare' => '='
+//                                                                )
+//                                                            ),
+                                                        );
+                                                        $query = new WP_Query($args);
+                                                        while ($query->have_posts()):$query->the_post();
+                                                            $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+                                                            ?>
+                                                            <li>
                                                                 <div>
-                                                                    <h3 class="name-title">john smith</h3>
-                                                                    <span>9.5/10.0 (ps4)</span>
+                                                                    <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
+                                                                    <div>
+                                                                        <h3 class="name-title"><?php the_title(); ?></h3>
+                                                                        <span><?php the_time("j, n, Y"); ?> (ps4)</span>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <p>
-                                                                lorem Ipsum is simply dummy text of the printing and typesetting...
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                                <div>
-                                                                    <h3 class="name-title">john smith</h3>
-                                                                    <span>9.5/10.0 (ps4)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>
-                                                                lorem Ipsum is simply dummy text of the printing and typesetting...
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                                <div>
-                                                                    <h3 class="name-title">john smith</h3>
-                                                                    <span>9.5/10.0 (ps4)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>
-                                                                lorem Ipsum is simply dummy text of the printing and typesetting...
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                                <div>
-                                                                    <h3 class="name-title">john smith</h3>
-                                                                    <span>9.5/10.0 (ps4)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>
-                                                                lorem Ipsum is simply dummy text of the printing and typesetting...
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                                <div>
-                                                                    <h3 class="name-title">john smith</h3>
-                                                                    <span>9.5/10.0 (ps4)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>
-                                                                lorem Ipsum is simply dummy text of the printing and typesetting...
-                                                            </p>
-                                                        </li>
-                                                        <li>
-                                                            <div>
-                                                                <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                                <div>
-                                                                    <h3 class="name-title">john smith</h3>
-                                                                    <span>9.5/10.0 (ps4)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p>
-                                                                lorem Ipsum is simply dummy text of the printing and typesetting...
-                                                            </p>
-                                                        </li>
+                                                                <p>
+                                                                    <?php echo get_the_content(); ?>
+                                                                </p>
+
+                                                            </li>
+                                                        <?php endwhile; ?>
                                                     </ul>
                                                 </div>
                                             </section>

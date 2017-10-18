@@ -81,7 +81,6 @@
 
 <script src="<?= get_bloginfo('stylesheet_directory'); ?>/assets/libraries/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?= get_bloginfo('stylesheet_directory'); ?>/assets/js/jquery.iframetracker.js"></script>
-<script src="<?= get_bloginfo('stylesheet_directory'); ?>/assets/js/main.js"></script>
 <script>
 
 

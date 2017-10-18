@@ -197,6 +197,67 @@ jQuery(document).ready(function ($) {
         singleItem: true
     });
 
+    $('#smt_btn').on('click', function (e) {
+        e.preventDefault();
+        if ($("#register_user").validationEngine('validate')) {
+            var user_name = $('input[name="u_name"]').val();
+            var user_email = $('input[name="u_email"]').val();
+            var pass = $('input[name="u_pass"]').val();
+            var retype_pass = $('input[name="re_pass"]').val();
+            if (pass === retype_pass) {
+
+            } else {
+                $('input[name="re_pass"]').attr("data-errormessage-value-missing", "Retype password is not match!");
+                var re_not_mach = $('input[name="re_pass"]').attr("data-errormessage-value-missing");
+                alert(re_not_mach);
+            }
+            $.ajax({
+                type: 'POST',
+                url: configs.ajaxurl,
+                data: {
+                    action: 'register_user',
+                    user_name: user_name,
+                    user_email: user_email,
+                    pass: pass
+                },
+                success: function () {
+
+                }
+            });
+
+        }
+
+    });
+
+    $('#user-review').on('click', function (e) {
+        e.preventDefault();
+        var Post_ID = $('input[name="post_ID"]').val();
+        var User_ID = $('input[name="User_ID"]').val();
+        var Msg = $('textarea[name="msg"]').val();
+        if (Msg == "") {
+            alert('Fill This Field');
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: configs.ajaxurl,
+                data: {
+                    action: 'user_review',
+                    Post_ID: Post_ID,
+                    user_ID: User_ID,
+                    msg: Msg
+                },
+                success: function () {
+                    $('#user-review').css({'background-color': '#1abb2e', 'color': '#fffdfd'});
+                    alert('Review has been send');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }
+            });
+        }
+
+    });
+
 });
 
 

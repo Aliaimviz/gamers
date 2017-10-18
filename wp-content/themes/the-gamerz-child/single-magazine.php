@@ -11,6 +11,14 @@ $template = get_post_meta($post_id, 'set_template', true);
     <main id="main" class="site-main">
         <div class="magazine-single-page">
             <?php
+            $user_id = get_current_user_id(); 
+                    $post_ids = get_the_ID();
+                     $post_counts = get_post_meta($post_ids,'post_likes_more',true);
+                     if(empty($post_counts)){
+                        $counts = 0;
+                     }else{
+                        $counts = count(get_post_meta($post_ids,'post_likes_more',true));
+                     }
             if (have_posts()) {
                 while (have_posts()):the_post();
                     $Featured_Image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
@@ -18,7 +26,7 @@ $template = get_post_meta($post_id, 'set_template', true);
                     <div class="magazine-single-banner" style="background: url(<?php echo $Featured_Image[0]; ?>);">
                         <div class="likes">
                             <i class="fa fa-heart" aria-hidden="true"></i>
-                            <h4>total likes <br> <span>125</span> </h4>
+                            <h4>total likes <br> <span><?php echo $counts; ?></span> </h4>
                         </div>
                         <h1>For honor review- Somtime  it’s good to be honorless</h1>
                     </div>
@@ -76,14 +84,7 @@ $template = get_post_meta($post_id, 'set_template', true);
                             </ul>
                         </div>
                     </div>
-                    <?php $user_id = get_current_user_id(); 
-                    $post_ids = get_the_ID();
-                     $post_counts = get_post_meta($post_ids,'post_likes_more',true);
-                     if(empty($post_counts)){
-                        $counts = 0;
-                     }else{
-                        $counts = count(get_post_meta($post_ids,'post_likes_more',true));
-                     }
+                    <?php 
                      //print_r($pst_count);
                      $post_likes_user = get_post_meta($post_ids,'post_likes_more',true);
                      
@@ -112,7 +113,7 @@ $template = get_post_meta($post_id, 'set_template', true);
 
                      $user_ip = getUserIP();
                     ?>
-                    <div class="loader_show" style="display:none;"><img src="<?php echo site_url(); ?>/ajax-loader.gif"/></div>
+                    <div class="loader_show" style="display:none;position: relative;left: 20%;top: 79px;z-index: 9999999999999999999;"><img src="<?php echo site_url(); ?>/ajax-loader.gif"/></div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 social-btns">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bdr" id="heart">
                             <div class="Success_login_counter" style="display:none;">
@@ -123,23 +124,23 @@ $template = get_post_meta($post_id, 'set_template', true);
                               if(in_array($user_ip,$post_likes_user)){
                               ?>
                               
-                               <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="dislikes"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                               <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="dislikes"><i class="fa fa-heart" aria-hidden="true"></i>
                               <?php
                             }else{
                               ?>
-                             <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart" aria-hidden="true"></i>
+                             <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart-o" aria-hidden="true"></i>
                               <?php
                               }
                             }else{
                               ?>
-                              <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart" aria-hidden="true"></i>
+                              <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart-o" aria-hidden="true"></i>
                               <?php
                             }
                             
                             ?>
                             
                                 
-                                <span>Total <span class="counter_likes"><?php echo $counts; ?></span></span>
+                                <span>Total <span class="counter_likes"><?php //echo $counts; ?></span></span>
                             </a>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
