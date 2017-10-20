@@ -71,7 +71,7 @@ jQuery(document).ready(function ($) {
 
 
 
-    // for fixed sidebar 
+    // for fixed sidebar
     // var bannerHeight = $('.magazine-single-banner').outerHeight(true);
     // var headerHeight = $('header').outerHeight(true); // true value, adds margins to the total height
     // var totalTopHeight = bannerHeight + headerHeight;
@@ -111,7 +111,7 @@ jQuery(document).ready(function ($) {
     // 	   	console.log('affix-bottom.bs.affix');
 
     // 	    $('.for-affix').hide();
-    // 	    $(this).css('bottom', 'auto'); // THIS is what makes the jumping 
+    // 	    $(this).css('bottom', 'auto'); // THIS is what makes the jumping
 
     // 	});
     // }
@@ -119,7 +119,7 @@ jQuery(document).ready(function ($) {
 });
 
 
-// for carousel 
+// for carousel
 jQuery(document).ready(function ($) {
 
     $('#myCarousel').carousel({
@@ -141,8 +141,6 @@ jQuery(document).ready(function ($) {
         $('#carousel-text').html($('#slide-content-' + id).html());
     });
 
-
-
     $('.side_menu').css('display', 'none');
 
     $('li.side_menu').each(function (index, el) {
@@ -151,7 +149,7 @@ jQuery(document).ready(function ($) {
 
 
 
-    // scrol to div	
+    // scrol to div
     $(".single-side-content ul li a").click(function (e) {
         e.preventDefault();
 
@@ -180,7 +178,6 @@ jQuery(document).ready(function ($) {
         pagination: false,
         navigationText: ['<i class="fa fa-2x fa-arrow-circle-o-left" aria-hidden="true"></i>', '<i class="fa fa-2x fa-arrow-circle-o-right" aria-hidden="true"></i>']
 
-
     });
     $("#owl-video").owlCarousel({
         navigation: true, // Show next and prev buttons
@@ -196,6 +193,14 @@ jQuery(document).ready(function ($) {
         paginationSpeed: 400,
         singleItem: true
     });
+    $("#table-slider").owlCarousel({
+        navigation: true,
+        items: 3,
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true
+    });
+
 
     $('#smt_btn').on('click', function (e) {
         e.preventDefault();
@@ -205,7 +210,6 @@ jQuery(document).ready(function ($) {
             var pass = $('input[name="u_pass"]').val();
             var retype_pass = $('input[name="re_pass"]').val();
             if (pass === retype_pass) {
-
             } else {
                 $('input[name="re_pass"]').attr("data-errormessage-value-missing", "Retype password is not match!");
                 var re_not_mach = $('input[name="re_pass"]').attr("data-errormessage-value-missing");
@@ -221,7 +225,10 @@ jQuery(document).ready(function ($) {
                     pass: pass
                 },
                 success: function () {
-
+                    $('#myModal').modal('toggle');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
                 }
             });
 
@@ -229,13 +236,20 @@ jQuery(document).ready(function ($) {
 
     });
 
+
+
+
     $('#user-review').on('click', function (e) {
         e.preventDefault();
         var Post_ID = $('input[name="post_ID"]').val();
         var User_ID = $('input[name="User_ID"]').val();
         var Msg = $('textarea[name="msg"]').val();
+        var value_of_star = $('input[name="star_value"]').val();
+        var data_error = $('input[name="star_value"]').attr('data-error');
         if (Msg == "") {
-            alert('Fill This Field');
+            alert('Requid Comment Field');
+        } else if (value_of_star <= 0) {
+            alert(data_error);
         } else {
             $.ajax({
                 type: 'POST',
@@ -244,7 +258,8 @@ jQuery(document).ready(function ($) {
                     action: 'user_review',
                     Post_ID: Post_ID,
                     user_ID: User_ID,
-                    msg: Msg
+                    msg: Msg,
+                    value_of_star: value_of_star
                 },
                 success: function () {
                     $('#user-review').css({'background-color': '#1abb2e', 'color': '#fffdfd'});
@@ -258,6 +273,133 @@ jQuery(document).ready(function ($) {
 
     });
 
+    /*  Star jquery code*/
+    // Starrr plugin (https://github.com/dobtco/starrr)
+    var __slice = [].slice;
+
+    (function ($, window) {
+        var Starrr;
+
+        Starrr = (function () {
+            Starrr.prototype.defaults = {
+                rating: void 0,
+                numStars: 5,
+                change: function (e, value) {}
+            };
+
+            function Starrr($el, options) {
+                var i, _, _ref,
+                        _this = this;
+
+                this.options = $.extend({}, this.defaults, options);
+                this.$el = $el;
+                _ref = this.defaults;
+                for (i in _ref) {
+                    _ = _ref[i];
+                    if (this.$el.data(i) != null) {
+                        this.options[i] = this.$el.data(i);
+                    }
+                }
+                this.createStars();
+                this.syncRating();
+                this.$el.on('mouseover.starrr', 'i', function (e) {
+                    return _this.syncRating(_this.$el.find('i').index(e.currentTarget) + 1);
+                });
+                this.$el.on('mouseout.starrr', function () {
+                    return _this.syncRating();
+                });
+                this.$el.on('click.starrr', 'i', function (e) {
+                    return _this.setRating(_this.$el.find('i').index(e.currentTarget) + 1);
+                });
+                this.$el.on('starrr:change', this.options.change);
+            }
+
+            Starrr.prototype.createStars = function () {
+                var _i, _ref, _results;
+
+                _results = [];
+                for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+                    _results.push(this.$el.append("<i class='fa fa-star-o' aria-hidden='true'></i>"));
+                }
+                return _results;
+            };
+
+            Starrr.prototype.setRating = function (rating) {
+                if (this.options.rating === rating) {
+                    rating = void 0;
+                }
+                this.options.rating = rating;
+                this.syncRating();
+                return this.$el.trigger('starrr:change', rating);
+            };
+
+            Starrr.prototype.syncRating = function (rating) {
+                var i, _i, _j, _ref;
+
+                rating || (rating = this.options.rating);
+                if (rating) {
+                    for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+                        this.$el.find('i').eq(i).removeClass('fa-star-o').addClass('fa-star');
+                    }
+                }
+                if (rating && rating < 5) {
+                    for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+                        this.$el.find('i').eq(i).removeClass('fa-star').addClass('fa-star-o');
+                    }
+                }
+                if (!rating) {
+                    return this.$el.find('i').removeClass('fa-star').addClass('fa-star-o');
+                }
+            };
+
+            return Starrr;
+
+        })();
+        return $.fn.extend({
+            starrr: function () {
+                var args, option;
+
+                option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+                return this.each(function () {
+                    var data;
+
+                    data = $(this).data('star-rating');
+                    if (!data) {
+                        $(this).data('star-rating', (data = new Starrr($(this), option)));
+                    }
+                    if (typeof option === 'string') {
+                        return data[option].apply(data, args);
+                    }
+                });
+            }
+        });
+    })(window.jQuery, window);
+
+    $(function () {
+        return $(".starrr").starrr();
+    });
+    $(document).ready(function () {
+
+        $('#stars').on('starrr:change', function (e, value) {
+            $('#count').val(value);
+        });
+
+        $('#stars-existing').on('starrr:change', function (e, value) {
+            $('#count-existing').html(value);
+        });
+    });
+
+
+    $('#tog_one,#tog_two,#tog_three').on('click', function () {
+        var Attr = $(this).attr('data-expand');
+        var Data = $(this).attr('data-target');
+        console.log(Attr);
+        if (Attr == 'false') {
+            $('.' + Data).addClass('in');
+            $(this).attr('data-expand', 'true');
+        } else {
+            $('.' + Data).removeClass('in');
+            $(this).attr('data-expand', 'false');
+        }
+    });
 });
-
-

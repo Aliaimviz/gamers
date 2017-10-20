@@ -11,6 +11,47 @@ global $post;
                     $featured_image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
                     ?> 
                     <div class="magazine-guides-banner" style='background:url("<?php echo $featured_image[0]; ?>");'>
+                        <div class="row">
+                            <div class="likes_game float-right">
+                                <div class="heart-left">
+                                    <span>
+                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/heart-white.png" class="img-responsive center-block"/>
+                                    </span>
+                                </div>
+                                <div class="likes-body">
+                                    <h6>Total Likes</h6>
+                                    <h4>125</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-center clear-fix">
+                                <div class="col-xs-4">
+                                    <div class="rating-inner-box icon-one">
+                                        <h6>Your</h6>
+                                        <div class="img-box-rate">
+                                            <span>rate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="rating-inner-box">
+                                        <h6>Your</h6>
+                                        <div class="img-box-rate">
+                                            <span>rate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="rating-inner-box">
+                                        <h6>Your</h6>
+                                        <div class="img-box-rate">
+                                            <span>rate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <h1><?php the_title(); ?></h1>
                     </div>
                     <?php
@@ -424,9 +465,8 @@ global $post;
                                                     </div>
                                                     <ul id="buying-guide-side">
                                                         <?php
-                                                        $game_ID = get_post_meta($post->ID, 'wpcf-game-id', true);
-                                                        $User_ID = get_post_meta($post->ID, 'wpcf-user-id', true);
                                                         $args = array(
+                                                            'post_parent' => $id,
                                                             'post_type' => 'review',
                                                             'posts_per_page' => 6,
                                                             'order' => 'DESC',
@@ -437,14 +477,6 @@ global $post;
                                                                     'terms' => 'user-reviews',
                                                                 )
                                                             ),
-//                                                            'meta_query' => array(
-//                                                                'relation' => 'OR', // Optional, defaults to "AND"
-//                                                                array(
-//                                                                    'key' => $game_ID,
-//                                                                    'value' => $User_ID,
-//                                                                    'compare' => '='
-//                                                                )
-//                                                            ),
                                                         );
                                                         $query = new WP_Query($args);
                                                         while ($query->have_posts()):$query->the_post();

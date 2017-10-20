@@ -44,8 +44,130 @@ class inner_pages_shortcodes {
 
         add_action('wp_ajax_show_posts_games_image', array($this, 'show_posts_games_image'));
         add_action('wp_ajax_nopriv_show_posts_games_image', array($this, 'show_posts_games_image'));
+        add_shortcode("ads-banner",array($this,"ads_banner_image"));
+        add_shortcode("top-ten-rating-games",array($this,"top_ten_rating_game_show"));
     }
+    function top_ten_rating_game_show(){
+        Global $rate;
+        $args = array(
+            'post_type' => 'game',
+            'post_status' => 'publish',
+            'posts_per_page' => -1
+        );
+        $query = new WP_Query($args);
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $post_id = get_the_ID();
+                $args_rate_arg = array(
+                            'post_parent' => $post_id,
+                            'post_type' => 'review',
+                            'post_status' => 'publish',
+                            'posts_per_page' => -1
+                        );
+                $args_rate_full = new WP_Query($args_rate_arg);
+                $post_count = $args_rate_full->post_count;
+                while($args_rate_full->have_posts()){
+                    $args_rate_full->the_post();
+                    
+                    $review_id = get_the_ID();
+                    $rate += get_post_meta($review_id, 'wpcf-rating', true);         
+                    // echo $rate;
+                    // echo "<br />";
+                }
+                if (!empty($rate)) {
+                    $rate_array[$post_id] = round($rate/$post_count);   
+                }
+                $rate = 0;
+            }
 
+            
+           
+        }
+        $html ='';
+        /*$a =0;
+        $ars = array();
+        foreach($rate_array as $key=>$val){
+            if($a<$val){
+                $a = $val;
+                $ars[] = $key.'_'.$val;
+            }else{
+                $a = $val;
+                $ars[]=$key.'_'.$val;
+            }
+        }
+        arsort($ars);
+$arss = array_reverse($ars);
+print_r($arss);*/
+        $html .='
+                <div class="col-xs-12 r-m-p">
+                    <section id="custom_html-20" class="widget_text widget widget_custom_html">
+                        <div class="textwidget custom-html-widget similar-product">
+                            <div class="similar-products">
+                                <h3>Top 10 of Month</h3>
+                                <ul class="clearfix">
+                ';
+                                   foreach($rate_array as $key=>$val){
+                                       
+                                        $html .='<li>
+                                                    <div>
+                                                        <span>'.get_the_date().'</span>
+                                                        <h4><a href="'.get_the_permalink($key).'"> '.get_the_title($key).' </a></h4>
+                                                    </div>
+                                                    <span>
+                                                        <div class="text">'.$val.'</div>
+                                                    </span>
+                                                 </li>';
+                                   }
+
+            $html .='               </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>';
+       return $html;
+        /*$arr = array();
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                    $query->the_post();
+                    $post_id = get_the_ID();
+                    $args_rate_arg = array(
+                                'post_parent' => $post_id,
+                                'post_type' => 'review',
+                                'post_status' => 'publish',
+                                'posts_per_page' => -1
+                            );
+                    $args_rate_full = new WP_Query($args_rate_arg);
+                    if($args_rate_full->have_posts()){
+                        while($args_rate_full->have_posts()){
+                            //$arr[]
+                            $review_id = get_the_ID();
+                            if($arr[$post_id]==$post_id){
+                                $rate_fix = get_post_meta($review_id,'wpcf-rating',true);
+                                $arr[$post_id][] =$rate_fix; 
+                            }else{
+                                $rate_fix = get_post_meta($review_id,'wpcf-rating',true);
+                                $arr[$post_id][] = $rate_fix;
+                            }
+                        }
+                    }
+            }
+        }*/
+    }
+    function ads_banner_image($atts = array(), $content = null, $tag){
+       shortcode_atts(array(
+                    'var1' => 'default var1',
+                    'link' => false
+                ), $atts);
+
+        $html ='';
+        $html .='<div class="add_sens_box">
+                        <a href="#">
+                            <img src="'.$atts["link"].'" class="img-responsive">
+                        </a>
+                    </div>';
+        return $html; 
+    }
     function show_posts_games_image() {
         $pref_search_game_txt = $_POST["pref_search_game_txt"];
         $main_cat = $_POST["main_cat"];
@@ -221,6 +343,7 @@ class inner_pages_shortcodes {
                     }
                     return $ip;
                 }
+
                 $user_ip = getUserIPS();
                 while ($query->have_posts()) {
                     $query->the_post();
@@ -904,6 +1027,7 @@ class inner_pages_shortcodes {
                                         </div>
                                     </div>
                                 </div><!--./End game_detailing Here-->
+                                
                             </div>
                         </div>';
             }
@@ -953,23 +1077,24 @@ class inner_pages_shortcodes {
     }
 
     function search_likes_chartes_dislikes_compare() {
-        $post_ids = $_POST["counter"];
+        echo $post_ids = $_POST["counter"];
+        echo "<br>";
         $user_id = $_POST["user_id"];
-
-        $arr = array();
-        $likes_post_meta = get_post_meta($post_ids, 'post_likes_more', true);
-        if (!empty($likes_post_meta)) {
-            foreach ($likes_post_meta as $dislike) {
-                if ($dislike != $user_id) {
-                    $arr[] = $dislike;
-                } else {
-                    continue;
-                }
-            }
-            update_post_meta($post_ids, 'post_likes_more', $arr);
-            echo count(get_post_meta($post_ids, 'post_likes_more', true));
+        $compare = $_COOKIE['compare'];
+        
+        $savedCardArray = json_decode($compare, true);
+        echo "<pre>";
+        print_r($savedCardArray);
+        echo "</pre>";
+        if(!empty($compare)){
+            $compare[] = $post_ids;
+        }else{
+            $arr =array();
+            $arr[] = $post_ids;
+            $json_encode = json_encode($arr);
+        setcookie('compare', $json_encode);    
         }
-
+        
 
         die();
     }
@@ -1054,30 +1179,87 @@ class inner_pages_shortcodes {
                                 				<a href="' . get_term_link($term_ids) . '">' . $term_list[0]->name . '</a>
                                 			</span>';
                 }
+                $args_rate = array(
+                                        'post_parent' => $post_id,
+                                        'post_type' => 'review',
+                                        'post_status' => 'publish'
+                                    );
+                            $query_rate = new WP_Query($args_rate);
+                           $count_user = $query_rate->post_count;
+                            $total ='';
+                            $total_rating = '';
+                            $final_rating ='';
 
+                            $total1 ='';
+                            $total_rating1 = '';
+                            $final_rating1 ='';  
+                                $admin_rate  = array(
+                                        'post_type' => 'review',
+                                        'post_status' => 'publish',
+                                        'meta_query' => array(
+                                               array(
+                                                   'key' => 'wpcf-post-id',
+                                                   'value' => $post_id,
+                                                   'compare' => '=',
+                                               ),
+                                           )
+                                    );
+                            $query_rate_admin = new WP_Query($admin_rate);                                
+                            //echo count($query_rate_admin);
+                             $count_user_admin = $query_rate_admin->post_count;
+                            
                 $html .= '</div><!--./End Img-box here-->
                                 <div class="game_detailing">
-                                    <h5>' . substr($title, 20) . '</h5>
+                                    <h5>' . substr($title, 0, 20) . '...</h5>
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <div class="pull-left rating-bg">
-                                                <span>70</span>
-                                            </div>
+                                            <div class="pull-left rating-bg">';
+                                            $j =0;
+                                            if($query_rate_admin->have_posts()){
+                                                while ($query_rate_admin->have_posts()) {
+                                                    $query_rate_admin->the_post();
+                                                    echo $post_id_rate_admin = get_the_ID();
+                                                    $post_rates = get_post_meta($post_id_rate_admin, 'wpcf-rating', true);
+                                                    $total1 = $total1+$post_rates;
+                                                    $j++;
+                                                }
+                                                //echo $j;
+                                                $total_rating1 = $total1/$j;
+                                                $final_rating1 = $total_rating1*20;
+                                                $html .='<span>'.$final_rating1.'</span>';
+                                            }else{
+                                                $html .='<span>0</span>';
+                                            }
+                                                
+                                            $html .='</div>
                                             <div class="media-body rating-text">
                                                 <p class="media-heading">5 Expert Rating</p>
                                             </div>
                                         </div>
                                         <div class="col-xs-6">
-                                            <div class="pull-left rating-bg">
-                                                <span>68</span>
-                                            </div>
+                                            <div class="pull-left rating-bg">';
+                                            if($query_rate->have_posts()){
+                                                while ($query_rate->have_posts()) {
+                                                    $query_rate->the_post();
+                                                    $post_id_rate = get_the_ID();
+                                                    $post_rate = get_post_meta($post_id_rate, 'wpcf-rating', true);
+                                                    $total = $total+$post_rate;
+                                                }
+                                                $total_rating = $total/$count_user;
+                                                $final_rating = $total_rating*20;
+                                                $html .='<span>'.$final_rating.'</span>';
+                                            }else{
+                                                $html .='<span>0</span>';
+                                            }
+                                                //$html .='<span>68</span>';
+                                            $html .='</div>
                                             <div class="media-body rating-text">
                                                 <p class="media-heading">13 USer Rating</p>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <p class="rating-description">
-                                                ' . substr($content, 0, 200) . '
+                                                ' . substr($content, 0, 200) . '...
                                             </p>
                                         </div>
                                         <div class="col-xs-12">
@@ -1298,10 +1480,12 @@ class inner_pages_shortcodes {
     function footer_scriptss_muy() {
         $html = '<script>
     				jQuery(document).ready(function(){
+                        var name = localStorage.getItem("name");
+                        console.log(name);
     					jQuery(document).on("click",".search_btn",function(){
-    						
     						var search_flds = jQuery("#search_flds").val();
-    						jQuery(".loader_ajax").show();
+    						
+                            jQuery(".loader_ajax").show();
     						jQuery.ajax({
 									url : "' . site_url() . '/wp-admin/admin-ajax.php",
 									type : "post",
@@ -1310,7 +1494,9 @@ class inner_pages_shortcodes {
 									search_flds : search_flds
 									},
 									success : function( response ) {
-									//console.log(response);           
+
+									//console.log(response);
+
 									jQuery(".show_cats_vido").html(response);
 									jQuery(".loader_ajax").hide();
 									},
@@ -1321,7 +1507,9 @@ class inner_pages_shortcodes {
 								});
     					});
     					jQuery(document).on("click",".filter_terms_child",function(){
+
     						var favorite = [];
+
 				            jQuery.each(jQuery("input[type=checkbox]:checked"), function(){            
 				                favorite.push(jQuery(this).val());
 				            });
@@ -1335,6 +1523,7 @@ class inner_pages_shortcodes {
 									favorite : favorite
 									},
 									success : function( response ) {
+
 									//console.log(response);           
 									jQuery(".show_cats_vido").html(response);
 									jQuery(".loader_ajax").hide();
@@ -1400,8 +1589,64 @@ class inner_pages_shortcodes {
     					jQuery(document).on("click",".compare_actives",function(){
     						var posts_ids = jQuery(this).attr("data-post-id");
     						var user_ids = jQuery(this).attr("id");
-								jQuery(".loader_show").show();
-    							jQuery.ajax({
+								//jQuery(".loader_show").show();
+                                var name = localStorage.getItem("name");
+                                console.log(name);
+                                var arr = [];
+                                
+                               // arr arr.push(name);
+                                if(name!="null"){
+                                  //  console.log(name);
+                                    if(name==null){
+
+                                    }else{
+                                        var arr = name.split(",");    
+                                    }
+                                    
+                                     
+                                var i = arr.indexOf(posts_ids);
+                                  if(i > -1){
+                                   alert("your already compared");
+                                  }
+                                  else{
+                                     
+                                    arr.push(posts_ids);
+                                  }
+                                
+                                }else{
+                                    arr.push(posts_ids);
+                                }
+                                
+                                if (localStorage) {
+                                    arr.push(posts_ids);
+                                    localStorage.setItem("name", arr);
+                                } else {
+            
+                                    alert("sorry");
+                                } 
+                                var plannerID;
+                            var cartItem = 0;
+
+                            
+                               
+                                gameID = posts_ids;
+                                console.log(jQuery.cookie("compareArray"));
+                                if (jQuery.cookie("compareArray") === undefined) {
+                                    // have cookie
+                                    jQuery.cookie("compareArray", gameID, {
+                                        path: "/"
+                                    });
+                                    console.log(jQuery.cookie("compareArray"));
+                                } else {
+                                    tripPlanner = jQuery.cookie("compareArray").split(",");
+                                    tripPlanner.push(gameID);
+                                    jQuery.cookie("compareArray", tripPlanner, {
+                                        path: "/"
+                                    });
+                                    console.log(jQuery.cookie("compareArray").split(","));
+                                }
+    
+    							/*jQuery.ajax({
 									url : "' . site_url() . '/wp-admin/admin-ajax.php",
 									type : "post",
 									data : {
@@ -1421,7 +1666,7 @@ class inner_pages_shortcodes {
 									
 									console.log(errorThrown);
 									}
-								});
+								});*/
     					});
     					jQuery(document).on("click",".likes_actives",function(){
     						var posts_ids = jQuery(this).attr("data-post-id");

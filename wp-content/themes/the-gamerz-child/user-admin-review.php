@@ -15,6 +15,25 @@ get_header();
 
 $Post_ID = $_GET['post_ID'];
 $User_ID = get_current_user_id();
+$args = array(
+    'post_parent' => $Post_ID,
+    'post_type' => 'review',
+    'author' => $User_ID,
+);
+$query = new WP_Query($args);
+if ($query->post->ID) {
+    ?>
+    <style>
+
+        #user-review{
+            display: none;
+        }
+        .shows{
+            display:block!important;
+        }
+    </style>
+    <?php
+}
 ?>
 <div class="container-fluid">
     <div class="container">
@@ -22,13 +41,11 @@ $User_ID = get_current_user_id();
             <div class="col-xs-12 col-xs-12 col-xs-12 col-xs-12">
                 <div class="write-a-review">
                     <h2><i class="fa fa-comments" aria-hidden="true"></i> Write A Review</h2>
-                    <h6><span>Tap a star to rate </span>
-                        <span class="stare-likes">
-                            <i class="fa fa-star-o" aria-hidden="true"></i> 
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                        </span>
+                    <h6>
+                        <span>Tap a star to rate </span>
+                        <div class="row lead">
+                            <div id="stars" class="starrr"></div>
+                        </div>
                     </h6>
                 </div>
             </div>
@@ -42,14 +59,23 @@ $User_ID = get_current_user_id();
                         </a>
                     </div>
                     <div class="media-body">
-                        <form class="form" id="review_form" method="post">
+                        <form class="form" id="review_form" method="post" onsubmit="review_validation()">
+                            <input type="hidden" name="star_value" id="count" data-error="requid star field">
                             <input type="hidden" name="post_ID" value="<?php echo $Post_ID; ?>">
                             <input type="hidden" name="User_ID" value="<?php echo $User_ID; ?>">
                             <div class="form-group">
                                 <textarea class="form-control" rows="10" name="msg"></textarea>
                             </div>
                             <div class="form-group">
+                                <?php
+                                ?>
                                 <button type="submit" id="user-review" class="btn btn-default">Sumbit</button>
+                                <?php
+                                ?>
+                                <div class="alert alert-danger shows">
+                                    <a href="#" class="" data-dismiss="alert">&times;</a>
+                                    <strong>Alert!</strong> You have reviewd this game
+                                </div>
                             </div>
                         </form>
                     </div>

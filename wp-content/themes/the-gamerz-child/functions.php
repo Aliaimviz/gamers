@@ -440,6 +440,7 @@ function custom_user_review() {
     $game_ID = $_POST['Post_ID'];
     $User_ID = $_POST['user_ID'];
     $Msg = $_POST['msg'];
+    $rating = $_POST['value_of_star'];
     $user_Name = get_user_by('id', $User_ID);
     $name = $user_Name->user_login;
     if (!empty($Msg)) {
@@ -454,17 +455,16 @@ function custom_user_review() {
         $post_ID = wp_insert_post($my_post);
         if (!empty($post_ID)) {
             wp_set_post_terms($post_ID, 39, 'reviews-category');
-            update_post_meta($post_ID, 'wpcf-game-id', $game_ID);
-            update_post_meta($post_ID, 'wpcf-user-id', $User_ID);
+            $total = ($rating);
+            update_post_meta($post_ID, 'wpcf-rating', $total);
+            update_post_meta($post_ID, 'wpcf-rating-post',$game_ID );
         }
     } else {
         
     }
-
     die();
 }
 
 add_action('wp_ajax_user_review', 'custom_user_review');
 add_action('wp_ajax_nopriv_user_review', 'custom_user_review');
-
 

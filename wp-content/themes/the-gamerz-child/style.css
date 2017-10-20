@@ -4401,6 +4401,7 @@ p.form-submit input#submit {
 }
 .widgets .textwidget #buying-guide-side{
     padding: 0px 20px;
+    width: 100%;
 }
 .custom-html-widget h2{
     background-color: #242424;
@@ -4837,11 +4838,11 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 .add_remove_btn_groups .btn-black{
     background-color:#000000;
 }
-.custom-table .table{
+.table{
     background-color:#ffffff;
     /*    border-color:#000000;*/
 }
-.custom-table .table thead tr td div a{
+.table thead tr td  a{
     font-family: 'Raleway';
     font-weight: normal;
     font-style: normal;
@@ -4850,13 +4851,13 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     display:block;
     text-transform:capitalize;
 } 
-.custom-table .table thead tr td div a:hover{
+.table thead tr td a:hover{
     text-decoration:none;
 } 
-.custom-table .table thead tr td{
+.table thead tr td{
     padding: 0px;
 }
-.custom-table .table thead tr td div a h2{
+.table thead tr td a h2{
     font-family: 'Raleway';
     font-weight: normal;
     font-style: normal;
@@ -4866,19 +4867,20 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     margin: 0px;
     padding: 15px 0px;
 }
-.custom-table .table thead tr td:first-child div{
+.table thead tr td:first-child div{
     visibility: hidden;
 }
 
-.custom-table .table tbody .heaings-row td{
+.table tbody .heaings-row td{
     background-color:#ffb400;
     color:#000000;
     text-transform:uppercase;
     font-family: 'Raleway';
     font-weight: bold;
     padding: 16px 20px;
+    height: 55px;
 }
-.custom-table .table tbody .second-row td h6{
+.table tbody .second-row td h6{
     text-transform:uppercase;
     font-family: 'Raleway';
     font-weight: 900;
@@ -4886,13 +4888,14 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     color:#242424;
     line-height: 50px;
 }
-.custom-table .table tbody .second-row td p{
+.table tbody .second-row td p{
     text-align: center;
     margin-bottom: 0;
-    margin: 0px auto;
-    width: 65%;
+    margin: -2px auto;
+    width: 100%;
+    height: 74px;
 }
-.custom-table .table tbody .second-row td p span{
+.table tbody .second-row td p span{
     display:block;
     float:left;
     margin-left:10px;
@@ -4912,19 +4915,20 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 .no-padding{
     padding: 0px!important;
 }
-.custom-table .table tbody .price_blk td{
+.table tbody .price_blk td{
     background-color: #000000;
     color: #f0f0f0;
     text-transform: uppercase;
     font-family: 'Raleway';
     font-weight: bold;
     padding: 16px 20px;
+    height:55px;
 }
 .down-caret{
     display:block;
     text-align:right;
 }
-.custom-table .table tbody .product_red td{
+.table tbody .product_red td{
     background-color: #242424;
     color: #f0f0f0;
     text-transform: uppercase;
@@ -4935,7 +4939,12 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 .custom-table .table tbody .collapse{
 
 }
-
+.product_red td{
+    height:55px;
+}
+.product_red td span{
+    float:left;
+}
 .inner_text h5{
     font-family: 'Raleway';
     font-size:16px;
@@ -4960,7 +4969,10 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
 .custom-table .table tbody tr.red td{
     background-color: #c32a30;
 }
-
+.second-row td h5{
+    border-bottom: 1px solid #ddd!important;
+    padding: 9px 11px;
+}
 /*Game result Page Css Here*/
 .bg-color{
     background-color:#242424;
@@ -5185,7 +5197,7 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     font-weight: normal;
     font-size:14px;
     color:#666666;
-
+    margin-right: 24px;
 }
 .stare-likes{
     display:block;
@@ -5329,7 +5341,6 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     border-right:0px!important;
 }
 
-
 /*GAME UPLOAD*/
 .account-system h2{
 
@@ -5341,5 +5352,227 @@ a.list-group-item:focus, a.list-group-item:hover, button.list-group-item:focus, 
     display:block;
     color:#c5161d;
     font-size:14px;
+}
+.lead{
+    float:left;
+    margin-top: -11px;
+}
+.lead #stars i{
+    font-size: 18px;
+}
+.shows{
+    display:none;
+}
 
+#table-slider .item{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+#table-slider .owl-wrapper-outer .owl-wrapper .owl-item{
+    width: 315px!important;
+}
+.form-heading h2{
+    font-family: 'Raleway';
+    font-weight: 900;
+    color:#000000;
+    font-size:20px;
+    text-transform:uppercase;
+    margin-top: 50px;
+    margin-bottom: 38px;
+}
+.registration-form label{
+    color:#666666;
+    font-family: 'Raleway';
+    font-weight: normal;
+    font-size:16px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.registration-form label span{
+    color:#c9262c;
+
+}
+.registration-form input{
+    color:#666666;
+    font-family: 'Raleway';
+    border-radius: 0px;
+    height: 54px;
+    border-color:#cfcfcf;
+    padding-left: 10px;
+}
+.registration-form input:focus{
+    border-color: #cfcfcf!important;
+    box-shadow: none;
+}
+.registration-form button{
+    font-family: 'Raleway';
+    font-weight: bold;
+    color:#ffffff;
+    font-size:16px;
+    background-color:#c5161d;
+    padding:10px 30px;
+    text-transform:uppercase;
+    border-radius:0px;
+    border:none;
+    float:left;
+}
+.registration-form button:hover{
+    background-color:#c5161d;
+    color:#ffffff;
+}
+
+.login_form label{
+    color:#666666;
+    font-family: 'Raleway';
+    font-weight: normal;
+    font-size:16px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.login_form label span{
+    color:#c9262c;
+}
+.login_form input{
+    color:#666666;
+    font-family: 'Raleway';
+    border-radius: 0px;
+    height: 54px;
+    border-color:#cfcfcf;
+    padding-left: 10px;
+}
+.login_form input:focus{
+    border-color: #cfcfcf!important;
+    box-shadow: none;
+}
+.new-btn{
+    font-family: 'Raleway'!important; 
+    font-weight:800!important;
+    color:#ffffff!important;
+    font-size:16px!important;
+    background-color:#c5161d!important;
+    padding: 12px 56px!important;
+    text-transform:uppercase!important;
+    border-radius:0px!important;
+    border:none!important;
+    float: left;
+}
+.new-btn:hover{
+    background-color:#c5161d;
+    color:#ffffff;
+}
+.have_an_account{
+    display:block;
+    float: left;
+    margin-left: 50px;
+    margin-top: 13px;
+}
+.have_an_account a{
+    display:block;
+    font-family: 'Raleway'!important; 
+    font-weight:600!important;
+    color:#c5161d;
+    font-size:14px;
+}
+.have_an_account a:hover{
+    text-decoration: none;
+}
+.user-login-area{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.user-img-left{
+    width:60px;
+    height:60px;
+    border:1px solid #bcbcbc;
+    text-align:center;
+    float:left;
+}
+.user-content{
+    float:left;
+}
+.user-content h4{
+    font-family: 'Raleway'!important; 
+    font-size:16px;
+    color:#666666;
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+}
+.user-content h4 span{
+    display:block;
+    float: left;
+}
+.user-content h4 span a{
+    display:block;
+}
+.user-content h4 a{
+    display: block;
+}
+.user-name a{
+    font-family: 'Raleway'!important; 
+    font-weight:900!important;
+    color:#000000;
+    font-size:16px;
+    margin-left:10px;
+}
+.user-sign a{
+    color:#1c697d;
+    font-size:16px;
+    margin-left:10px;
+
+}
+.likes_game{
+    margin-right: 128px;
+    margin-top: 37px;
+}
+.heart-left{
+    float:left;
+}
+.likes-body{
+    float:left;
+}
+.likes-body h6{
+    font-family: 'Raleway'!important; 
+    font-weight:normal;
+    color:#ffffff;
+    font-size:18px;
+    text-transform: capitalize;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.likes-body h4{
+    font-family: 'Raleway'!important; 
+    font-weight:400;
+    color:#ffffff;
+    font-size:55px;
+    text-transform: capitalize;
+    margin-top: 0px;
+}
+.rating-inner-box h6{
+    text-align:center;
+    color:#ffffff;
+    font-size:16px;
+    font-family: 'Raleway'!important; 
+    font-weight:normal;
+    text-transform: uppercase;
+    margin-bottom: 21px;
+}
+.img-box-rate{
+    background: url(assets/img/icon-1.png) center top no-repeat;
+    background-size: 100%;
+    padding: 54px 0px;
+    text-align: center;
+}
+.img-box-rate span{
+    display: block;
+    font-family: 'Raleway'!important; 
+    font-weight:bold;
+    color:#c01f26;   
+    font-size:20px;
+    text-transform: uppercase;
+
+}
+.icon-one{
+    margin-top:39px;
 }

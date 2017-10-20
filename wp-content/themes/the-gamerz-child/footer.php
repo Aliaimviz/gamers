@@ -160,7 +160,13 @@
     });
 
 </script>
+
 <?php wp_footer(); ?>
+
+
+
+<!-- for comparision -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 </body>
 </html>
