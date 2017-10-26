@@ -1029,15 +1029,35 @@ get_header();
                             <div class="col-md-8">
                                 <h1 class="title">TITLE TILTE TITLE</h1>
                                 <div class="row bg-red">
-                                    <div class="col-md-3 after_block"><h5>Your</h5><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png" alt=""></div>
-                                    <div class="col-md-6 after_block"><h5>G2A SCORE</h5><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png" alt=""></div>
-                                    <div class="col-md-3" ><h5 class="user-heading">USER</h5><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png" alt=""></div>
+                                    <div class="col-md-3 after_block">
+                                        <h5>Your</h5>
+                                        <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png" alt="">
+                                    </div>
+                                    <div class="col-md-6 after_block">
+                                        <h5>G2A SCORE</h5>
+                                        <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png" alt="">
+                                    </div>
+                                    <div class="col-md-3" >
+                                        <h5 class="user-heading">USER</h5>
+                                        <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png" alt="">
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2><p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Produttore </h2><p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> GENRE </h2><p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2><p>Play Station4</p></div>
+                                    <div class="col-md-3 col-xs-6">
+                                    <h2 class="title-game"> Piattafarma </h2>
+                                    <p>Play Station4</p></div>
+                                    <div class="col-md-3 col-xs-6">
+                                    <h2 class="title-game"> Produttore </h2>
+                                    <p>Play Station4</p>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                    <h2 class="title-game"> GENRE </h2>
+                                    <p>Play Station4</p>
+                                    </div>
+                                    <div class="col-md-3 col-xs-6">
+                                    <h2 class="title-game"> SPEEDIZONE </h2>
+                                    <p>Play Station4</p>
+                                    </div>
 
                                 </div>
 

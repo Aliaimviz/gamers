@@ -1,6 +1,35 @@
 <?php
 get_header();
 ?>
+<!-- <style>
+.single_games_comments{
+    display: none;
+}
+</style> -->
+<div class="single_games_comments">
+<?php
+if ( comments_open() || get_comments_number() ) :
+                    comments_template();
+                endif;
+$comment_args = array('title_reply' => '',
+    'fields' => apply_filters('comment_form_default_fields', array(
+        'author' => '<p class="comment-form-author col-xs-12">' . '<label for="author">' . __('Your Good Name') . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
+        '<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' /></p>',
+        'email' => '<p class="comment-form-email col-xs-12">' .
+        '<label for="email">' . __('Your Email Please') . '</label> ' .
+        ( $req ? '<span>*</span>' : '' ) .
+        '<input id="email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />' . '</p>',
+        'url' => '')),
+    'comment_field' => '<p>' .
+    '<label for="comment" class="comment-form-email2 col-xs-12">' . __('Let us know what you have to say:') . '</label>' .
+    '<textarea id="comment" class="col-xs-12 text-area-xee" name="comment" cols="45" rows="8" aria-required="true"></textarea>' .
+    '</p>',
+    'comment_notes_after' => '',
+);
+
+comment_form($comment_args, $post->ID);
+?>
+</div>
 <div id="primary buying" class="content-area">
     <main id="main" class="site-main">
         <div class="magazine-single-page buying-guides-page">
@@ -56,77 +85,6 @@ get_header();
                          style="float: right;">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 pad-r19-l17 content-single-magazine">
-                                sdsad
-                                <!--                                                                <div class="simple-heading-para-content">
-                                                                                                    <h1>introduction</h1>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                </div>
-                                                                                                <div class="simple-heading-para-content simple-content-2">
-                                                                                                    <h1>how to choose best gaming headsets</h1>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <a href="#" class="simple-content-readmore">Read More</a>
-                                                                                                </div>-->
                                 <div class="image-text-quote">
                                     <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/magazine-single-banner.png">
                                 </div>
@@ -642,12 +600,18 @@ get_header();
 
                                                 </div>
                                                 <div class="list-colums">
-                                                    <h4><i class="fa fa-arrow-circle-o-right"
-                                                           aria-hidden="true"></i>Game Mouse 1</h4>
-                                                    <h4><i class="fa fa-arrow-circle-o-right"
-                                                           aria-hidden="true"></i>Game Mouse 2</h4>
-                                                    <h4><i class="fa fa-arrow-circle-o-right"
-                                                           aria-hidden="true"></i>Game Mouse 3</h4>
+                                                    <h4>
+                                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                                        Game Mouse 1
+                                                    </h4>
+                                                    <h4>
+                                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                                        Game Mouse 2
+                                                    </h4>
+                                                    <h4>
+                                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                                        Game Mouse 3
+                                                    </h4>
 
                                                 </div>
                                                 <div class="row">
@@ -679,8 +643,10 @@ get_header();
                                                            aria-hidden="true"></i>Game Mouse 1</h4>
                                                     <h4><i class="fa fa-arrow-circle-o-right"
                                                            aria-hidden="true"></i>Game Mouse 2</h4>
-                                                    <h4><i class="fa fa-arrow-circle-o-right"
-                                                           aria-hidden="true"></i>Game Mouse 3</h4>
+                                                    <h4>
+                                                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                                        Game Mouse 3
+                                                    </h4>
 
                                                 </div>
                                                 <div class="row">
@@ -1503,7 +1469,25 @@ get_header();
                         </div>
 
                         <div class="col-md-12 comminucation-banner2"></div>
-                        <div class="row comment">
+                        <?php
+                        if (have_posts()) : while (have_posts()) : the_post(); ?>
+                                        <?php
+                                        the_content();
+                                        //comments_template( '', true );
+                                        ?>
+                                        <?php
+                                        // If comments are open or we have at least one comment, load up the comment template.
+                                        /* if ( comments_open() || get_comments_number() ) :
+                                          comments_template( '', true );
+                                          endif; */
+                                        if (comments_open() || get_comments_number()) :
+                                            comments_template();
+                                        endif;
+                                        ?>
+                                    <?php endwhile; ?>
+                                <?php endif; 
+                                ?>
+                        <!-- <div class="row comment">
                             <div class="col-md-1" style="float: left;margin-bottom: 15px;"><img alt=""
                                                                                                 src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g"
                                                                                                 srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x"
@@ -1554,7 +1538,7 @@ get_header();
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

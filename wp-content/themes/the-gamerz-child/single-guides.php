@@ -1,12 +1,43 @@
 <?php
 get_header();
+global $post;
 ?>
+<?php // // Get wp-comments.php template 
+do_action("comment_form_before");
+/*$comment_args = array('title_reply' => '',
+    'fields' => apply_filters('comment_form_default_fields', array(
+        'author' => '<p class="comment-form-author col-xs-12">' . '<label for="author">' . __('Your Good Name') . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
+        '<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' /></p>',
+        'email' => '<p class="comment-form-email col-xs-12">' .
+        '<label for="email">' . __('Your Email Please') . '</label> ' .
+        ( $req ? '<span>*</span>' : '' ) .
+        '<input id="email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />' . '</p>',
+        'url' => '')),
+    'comment_field' => '<p>' .
+    '<label for="comment" class="comment-form-email2 col-xs-12">' . __('Let us know what you have to say:') . '</label>' .
+    '<textarea id="comment" class="col-xs-12 text-area-xee" name="comment" cols="45" rows="8" aria-required="true"></textarea>' .
+    '</p>',
+    'comment_notes_after' => '',
+);
+
+comment_form($comment_args, $post->ID);*/
+?>
+
 <div id="primary buying" class="content-area">
     <main id="main" class="site-main">
         <div class="magazine-single-page buying-guides-page">
-            <div class="magazine-guides-banner">
-                <h1>le miglori currie da gaming inverno 2017</h1>
-            </div>
+            <?php
+            if (have_posts()) {
+                while (have_posts()):the_post();
+                    $Featured_Image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), true);
+                    ?>
+                    <div class="magazine-guides-banner" style="background:url(<?php echo $Featured_Image[0]; ?>);">
+                        <h1><?php the_title(); ?></h1>
+                    </div>
+                    <?php
+                endwhile;
+            }
+            ?>
             <div id="sticky-anchor"></div>
             <div class="container mt-26 clearfix pad0">
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 w316 for-affix">&nbsp;</div>
@@ -17,8 +48,7 @@ get_header();
                             <div class="gadgets-content">
                                 <h3 class="Raleway name-title">now reading</h3>
                                 <p class="Raleway">
-                                    <?= get_the_excerpt(); ?>
-
+                                    <?php get_the_excerpt(); ?>
                                 </p>
                             </div>
                             <div class="row">
@@ -52,16 +82,6 @@ get_header();
                             <h2 class="Raleway"> contents</h2>
                             <div class="list-content">
                                 <ul id="navigation-ul">
-                                    <li><a href="#">overview</a></li>
-                                    <li><a href="#">rating</a></li>
-                                    <li><a href="#">full article</a></li>
-                                    <li><a href="#">custom anchor</a></li>
-                                    <li><a href="#">another anchor</a></li>
-                                    <li><a href="#">this menu is unique per post</a></li>
-                                    <li><a href="#">updated</a></li>
-                                    <li><a href="#">photos</a></li>
-                                    <li><a href="#">final thoughts</a></li>
-                                    <li><a href="#">comments</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -73,89 +93,17 @@ get_header();
                                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                                         <?php
                                         the_content();
-                                        //comments_template( '', true ); 
+                                        //comments_template( '', true );
                                         ?>
                                         <?php
                                         // If comments are open or we have at least one comment, load up the comment template.
                                         /* if ( comments_open() || get_comments_number() ) :
                                           comments_template( '', true );
                                           endif; */
-                                        if (comments_open() || get_comments_number()) :
-                                            comments_template();
-                                        endif;
+                                       
                                         ?>
                                     <?php endwhile; ?>
                                 <?php endif; ?>
-                                <!--                                                                <div class="simple-heading-para-content">
-                                                                                                    <h1>introduction</h1>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                </div>
-                                                                                                <div class="simple-heading-para-content simple-content-2">
-                                                                                                    <h1>how to choose best gaming headsets</h1>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <a href="#" class="simple-content-readmore">Read More</a>
-                                                                                                </div>-->
                                 <div class="image-text-quote">
                                     <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/magazine-single-banner.png">
                                 </div>
@@ -1106,12 +1054,9 @@ get_header();
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="col-md-12 comminucation-banner"></div>
-
                         <div class="col-md-12 best-mouse"><h1>BEST MOUSE UNDER 100 €</h1></div>
-                        <div class="simple-heading-para-content simple-content-2">
+                        <!-- <div class="simple-heading-para-content simple-content-2">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat delectus, cum
                                 porro, culpa esse temporibus nam tempore maiores fugiat atque ipsum, et quaerat
                                 dicta voluptas veritatis voluptatem, ea consequuntur.</p>
@@ -1124,440 +1069,49 @@ get_header();
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat delectus, cum
                                 porro, culpa esse temporibus nam tempore maiores fugiat atque ipsum, et quaerat
                                 dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                        </div>
+                        </div> -->
 
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png"
-                                     style="height: 350px;">
-                            </div>
-                            <div class="col-md-8">
-                                <h1 class="title">TITLE TILTE TITLE</h1>
-                                <div class="row bg-red">
-                                    <div class="col-md-3 after_block"><h5>Your</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png"
-                                            alt=""></div>
-                                    <div class="col-md-6 after_block"><h5>G2A SCORE</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png"
-                                            alt=""></div>
-                                    <div class="col-md-3"><h5 class="user-heading">USER</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png"
-                                            alt=""></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Produttore </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> GENRE </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2>
-                                        <p>Play Station4</p></div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="row" style="margin-bottom: 50px;">
-                            <div class="col-md-4">
-                                <h4 class="title-game bottom-border">editors Don't like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                                <h4 class="title-game bottom-border">editors like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-8 ">
-                                <div class="top-bottum-border">
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/44.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer47.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer48.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer1.png"
-                                            alt=""></div>
-
-                                </div>
-
-
-                                <div class="row tag-padding">
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">Status</h6>
-                                        <p>LIVE</p>
-                                        <h6 class="title-game">plattaforma</h6>
-                                        <p>SENZA</p>
-                                        <p>COOPERATIVO </p>
-                                        <h6 class="title-game">SYSTEMA DI PAGAMENTO</h6>
-                                        <p>PAY TO PLAY</p>
-                                        <p>FREE TO PLAY</p>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">DATA DI USCITA</h6>
-                                        <p>or TBA (To Be Announced)</p>
-                                        <h6 class="title-game">MULTIPLAYER </h6>
-                                        <p>PC</p>
-                                        <p>MAC</p>
-                                        <p>PS4</p>
-                                        <p>XBOX ONE</p>
-                                        <h6 class="title-game">AMBIENTAZIONE</h6>
-                                        <p>GUERRA</p>
-                                        <p>FANTASY</p>
-
-
-                                    </div>
-
-                                </div>
-                                <div style="text-align: center;margin-top: 10px;"><a href="#"
-                                                                                     class="simple-content-readmore black-bg">Visit
-                                        Offical Website</a></div>
-
-
-                                <div class="simple-heading-para-content simple-content-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <a href="#" class="simple-content-readmore"> Go To Page</a>
-                                    <a href="#" class="simple-content-readmore black-bg">Visit Offical Website</a>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png"
-                                     style="height: 350px;">
-                            </div>
-                            <div class="col-md-8">
-                                <h1 class="title">TITLE TILTE TITLE</h1>
-                                <div class="row bg-red">
-                                    <div class="col-md-3 after_block"><h5>Your</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png"
-                                            alt=""></div>
-                                    <div class="col-md-6 after_block"><h5>G2A SCORE</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png"
-                                            alt=""></div>
-                                    <div class="col-md-3"><h5 class="user-heading">USER</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png"
-                                            alt=""></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Produttore </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> GENRE </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2>
-                                        <p>Play Station4</p></div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="row" style="margin-bottom: 50px;">
-                            <div class="col-md-4">
-                                <h4 class="title-game bottom-border">editors Don't like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                                <h4 class="title-game bottom-border">editors like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-8 ">
-                                <div class="top-bottum-border">
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/44.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer47.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer48.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer1.png"
-                                            alt=""></div>
-
-                                </div>
-
-
-                                <div class="row tag-padding">
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">Status</h6>
-                                        <p>LIVE</p>
-                                        <h6 class="title-game">plattaforma</h6>
-                                        <p>SENZA</p>
-                                        <p>COOPERATIVO </p>
-                                        <h6 class="title-game">SYSTEMA DI PAGAMENTO</h6>
-                                        <p>PAY TO PLAY</p>
-                                        <p>FREE TO PLAY</p>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">DATA DI USCITA</h6>
-                                        <p>or TBA (To Be Announced)</p>
-                                        <h6 class="title-game">MULTIPLAYER </h6>
-                                        <p>PC</p>
-                                        <p>MAC</p>
-                                        <p>PS4</p>
-                                        <p>XBOX ONE</p>
-                                        <h6 class="title-game">AMBIENTAZIONE</h6>
-                                        <p>GUERRA</p>
-                                        <p>FANTASY</p>
-
-
-                                    </div>
-
-                                </div>
-                                <div style="text-align: center;margin-top: 10px;"><a href="#"
-                                                                                     class="simple-content-readmore black-bg">Visit
-                                        Offical Website</a></div>
-
-
-                                <div class="simple-heading-para-content simple-content-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <a href="#" class="simple-content-readmore"> Go To Page</a>
-                                    <a href="#" class="simple-content-readmore black-bg">Visit Offical Website</a>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png"
-                                     style="height: 350px;">
-                            </div>
-                            <div class="col-md-8">
-                                <h1 class="title">TITLE TILTE TITLE</h1>
-                                <div class="row bg-red">
-                                    <div class="col-md-3 after_block"><h5>Your</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png"
-                                            alt=""></div>
-                                    <div class="col-md-6 after_block"><h5>G2A SCORE</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png"
-                                            alt=""></div>
-                                    <div class="col-md-3"><h5 class="user-heading">USER</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png"
-                                            alt=""></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Produttore </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> GENRE </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2>
-                                        <p>Play Station4</p></div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h4 class="title-game bottom-border">editors Don't like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                                <h4 class="title-game bottom-border">editors like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-8 ">
-                                <div class="top-bottum-border">
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/44.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer47.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer48.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer1.png"
-                                            alt=""></div>
-
-                                </div>
-
-
-                                <div class="row tag-padding">
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">Status</h6>
-                                        <p>LIVE</p>
-                                        <h6 class="title-game">plattaforma</h6>
-                                        <p>SENZA</p>
-                                        <p>COOPERATIVO </p>
-                                        <h6 class="title-game">SYSTEMA DI PAGAMENTO</h6>
-                                        <p>PAY TO PLAY</p>
-                                        <p>FREE TO PLAY</p>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">DATA DI USCITA</h6>
-                                        <p>or TBA (To Be Announced)</p>
-                                        <h6 class="title-game">MULTIPLAYER </h6>
-                                        <p>PC</p>
-                                        <p>MAC</p>
-                                        <p>PS4</p>
-                                        <p>XBOX ONE</p>
-                                        <h6 class="title-game">AMBIENTAZIONE</h6>
-                                        <p>GUERRA</p>
-                                        <p>FANTASY</p>
-
-
-                                    </div>
-
-                                </div>
-                                <div style="text-align: center;margin-top: 10px;"><a href="#"
-                                                                                     class="simple-content-readmore black-bg">Visit
-                                        Offical Website</a></div>
-
-
-                                <div class="simple-heading-para-content simple-content-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <a href="#" class="simple-content-readmore"> Go To Page</a>
-                                    <a href="#" class="simple-content-readmore black-bg">Visit Offical Website</a>
-                                </div>
-
-
-                                <div class="pagination-wrap">
-                                    <ul class="pagination pagination-v1">
-                                        <li><a href="#">O</a></li>
-                                        <li><a class="active" href="#">O</a></li>
-                                        <li><a href="#">O</a></li>
-                                        <li><a href="#">O</a></li>
-                                        <li><a href="#">O</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
+                            <?php echo do_shortcode('[game-slider-section]'); ?>
 
                         <div class="col-md-12 comminucation-banner2"></div>
-                        <div class="row comment">
-                            <div class="col-md-1" style="float: left;margin-bottom: 15px;"><img alt=""
-                                                                                                src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g"
-                                                                                                srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x"
-                                                                                                class="avatar avatar-32 photo"
-                                                                                                height="40"
-                                                                                                width="40"></div>
-                            <div class="col-md-10">
+                        <div class="single_games_comments_sections">
+                            <div class="comments_section_before">
+                            <?php
+                            if (have_posts()) : while (have_posts()) : the_post(); ?>
 
+                                        <?php
+                                        if (comments_open() || get_comments_number()) :
+                                            comments_template();
+                                        endif;
+                                        ?>
+                                    <?php endwhile; ?>
+                                <?php endif;
+                                ?>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row comment">
+                            <div class="col-md-1" style="float: left;margin-bottom: 15px;">
+                                <img alt=""src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g"srcset="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=64&amp;d=mm&amp;r=g 2x"
+                                     class="avatar avatar-32 photo"
+                                     height="40"
+                                     width="40">
+                            </div>
+                            <div class="col-md-10">
                                 <div id="comment_form">
                                     <div><h4><i class="fa fa-comments" aria-hidden="true"></i>Comment</h4></div>
                                     <div>
-                                        <textarea rows="10" name="comment" id="comment" class="textarea"
-                                                  placeholder="Enter Your Comment Here"></textarea>
-                                    </div>
-                                    <div>
-                                        <input type="text" name="name" id="name" value="" class="textbox"
-                                               placeholder="Name">
-                                    </div>
-                                    <div>
-                                        <input type="email" name="email" id="email" value="" class="textbox"
-                                               placeholder="Email">
-                                    </div>
+                                        <textarea rows="10" name="comment" id="comment" class="textarea"placeholder="Enter Your Comment Here">
 
+                                        </textarea>
+                                    </div>
+                                    <div>
+                                        <input type="text" name="name" id="name" value="" class="textbox"placeholder="Name">
+                                    </div>
+                                    <div>
+                                        <input type="email" name="email" id="email" value="" class="textbox"placeholder="Email">
+                                    </div>
                                     <div class="comment-footer">
-
                                         <ul class="comments_ul">
                                             <li><img alt=""
                                                      src="http://0.gravatar.com/avatar/37c9fb2d6896e6dd97b1d46b08fd68ba?s=32&amp;d=mm&amp;r=g"
@@ -1568,22 +1122,17 @@ get_header();
                                             <li><i class="fa fa-user-o" aria-hidden="true"></i>Apri 13th, 2017 12:26
                                             </li>
                                         </ul>
-
                                         <p class="comment_para">Any1 played it ready? Is it worth buying?</p>
-
-
                                         <ul class="comments_rate_ul">
                                             <li>Rate this comment</li>
                                             <li>0 <i class="fa fa-thumbs-up" aria-hidden="true"></i></li>
                                             <li>0 <i class="fa fa-thumbs-down" aria-hidden="true"></i></li>
                                             <li><a href="#" class='comment-reply'>Reply</a></li>
                                         </ul>
-
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

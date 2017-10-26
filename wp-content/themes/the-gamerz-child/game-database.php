@@ -13,6 +13,9 @@
  */
 get_header();
 ?>
+<div class="container-fluid r-m-p">
+    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/game-database-img.png"/>
+</div>
 <div class="container-fluid">
     <div class="container">
         <div class="row">
@@ -21,13 +24,13 @@ get_header();
                     <div id="filter-panel" class="filter-panel header-panel">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <form class="form-inline" role="form">
+                                <form class="form-inline pull-right" role="form">
                                     <div class="row">
                                         <div class="form-group">
                                             <input type="text" class="form-control input-sm change_width" id="pref_search_game_txt" placeholder="search">
                                         </div>
                                         <div class="form-group header-select">
-                                            <select id="pref-orderby" class="form-control sml-select main_cat">
+                                            <select id="pref-orderbys" class="form-control sml-select main_cat">
                                                 <option value="">Choose</option>
                                                 <?php
                                                 $taxonomy = 'game-cat';
@@ -44,7 +47,7 @@ get_header();
                                         </div>
                                         <div class="form-group header-select">
                                             <select id="pref-orderby" class="form-control sml-select sub_cats">
-                                                
+
                                             </select>
                                         </div>
                                         <div class="form-group btn-group-right">
@@ -54,15 +57,15 @@ get_header();
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="sort-select pull-right">
+                                        <div class="sort-select pull-right mar-none">
                                             <div class="form-group">
                                                 <label class="">Sort By</label>
                                             </div>
                                             <div class="form-group header-select">
                                                 <select id="pref-orderby" class="form-control sml-select">
                                                     <option>MAIN CATEGORY</option>
-                                                    <option>first</option>
-                                                    <option>second</option>
+                                                    <option value="id">ID</option>
+                                                    <option value="Date">DATE</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -74,7 +77,6 @@ get_header();
                 </div>
             </div>
         </div>
-        <!--./End FIrst Row-->
         <div class="row r-m-p">
             <div class="col-xs-3 r-m-p">
                 <div class="video-pge-left-side">
@@ -86,63 +88,6 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <!--                <div class="col-xs-12 r-m-p">
-                                    <section id="custom_html-20" class="widget_text widget widget_custom_html">
-                                        <div class="textwidget custom-html-widget similar-product">
-                                            <div class="similar-products">
-                                                <h3>Top 10 of Month</h3>
-                                                <ul class="clearfix">
-                                                    <li>
-                                                        <div>
-                                                            <span>COMING 2017</span>
-                                                            <h4><a href="#"> HORIZON: ZERO DAWN THE FROZEN</a></h4>
-                                                        </div>
-                                                        <span>
-                                                            <div class="text">8.5</div>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <span>COMING 2017</span>
-                                                            <h4><a href="#"> HORIZON: ZERO DAWN THE FROZEN</a></h4>
-                                                        </div>
-                                                        <span>
-                                                            <div class="text">8.5</div>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <span>COMING 2017</span>
-                                                            <h4><a href="#"> HORIZON: ZERO DAWN THE FROZEN</a></h4>
-                                                        </div>
-                                                        <span>
-                                                            <div class="text">8.5</div>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <span>COMING 2017</span>
-                                                            <h4><a href="#"> HORIZON: ZERO DAWN THE FROZEN</a></h4>
-                                                        </div>
-                                                        <span>
-                                                            <div class="text">8.5</div>
-                                                        </span>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <span>COMING 2017</span>
-                                                            <h4><a href="#"> HORIZON: ZERO DAWN THE FROZEN</a></h4>
-                                                        </div>
-                                                        <span>
-                                                            <div class="text">8.5</div>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                
-                                        </div>
-                                    </section>
-                                </div>-->
                 <?php echo do_shortcode('[top-ten-rating-games]'); ?>
                 <div class="col-xs-12 r-m-p">
                     <div class="add_sens_box">
@@ -160,6 +105,7 @@ get_header();
                 </div>
             </div><!--./End left side Game database-->
             <div class="col-xs-9">
+                <img src="<?php echo site_url(); ?>/ajax-loader.gif" class="ajax_loader" style="display:none;">
                 <div class="main-game-wrapper">
                     <?php
                     echo do_shortcode('[game-database]');

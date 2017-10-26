@@ -38,34 +38,17 @@
                         <div id="filter-panel" class="filter-panel header-panel">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <form class="col-8 col-sm-12 col-md-7 col-lg-7" role="form">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control input-sm" id="pref-search" placeholder="search">
-                                        </div>
-                                        <div class="form-group header-select">
-                                            <select id="pref-orderby" class="form-control">
-                                                <option>MAIN CATEGORY</option>
-                                                <option>first</option>
-                                                <option>second</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group header-select">
-                                            <select id="pref-orderby" class="form-control">
-                                                <option>SUB CATEGORY</option>
-                                                <option>first sub</option>
-                                                <option>second sub</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group btn-group-right">
-                                            <button type="submit" class="btn btn-default filter-col header-btn-icon">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </button>  
-                                            <button type="submit" class="btn btn-default filter-col header-btn-search">
-                                                Search <span class="glyphicon glyphicon-search"></span>
-                                            </button>
-                                        </div>
-                                    </form>
-
+                                    
+                                    <form class="" action="http://site.startupbug.net:6999/thegamers/game-result/" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-sm change_width" id="pref-search" placeholder="search" name="home_search_fld">
+                                    </div>
+                                    
+                                    <div class="form-group btn-group-right">
+                                        <input type="submit" name="search_btns" id="seach_btns" value="Search">
+                                        
+                                    </div>
+                                </form>
                                     <div class="corner-btn col-12 col-sm-12 col-md-5 col-lg-5">
                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 register">
                                             <?php if (is_user_logged_in()) { ?>

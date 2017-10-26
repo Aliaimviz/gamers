@@ -94,45 +94,68 @@ if ($query->post->ID) {
                                 <div class="col-xs-6">
                                     <div class="reviews_box">
                                         <ul id="buying-guide-side">
-                                            <?php for ($a = 1; $a < 4; $a++) { ?>
-                                                <li>
-                                                    <div>
-                                                        <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                        <div>
-                                                            <h3 class="name-title">john smith</h3>
-                                                            <span>9.5/10.0 (ps4)</span>
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
-                                                    </p>
-                                                    <a href="#" class="btn brn-default">ReaD FULL REVIEWS</a>
-                                                </li>
-                                            <?php } ?>
+                                            <?php 
+                                                $post_ids = $_GET["post_ID"];
+                                                       
+                                                        $admin_rate2 = array(
+                                                                        'post_type' => 'review',
+                                                                        'post_status' => 'publish',
+                                                                        'posts_per_page' => 12,
+                                                                        'meta_query' => array(
+                                                                            array(
+                                                                                'key' => 'wpcf-post-id',
+                                                                                'value' =>  $post_ids,
+                                                                                'compare' => '=',
+                                                                            ),
+                                                                        )
+
+                                                                    );
+                                                        $query_rate_admin2 = new WP_Query($admin_rate2);
+                                                            $i=0;
+                                                              while ($query_rate_admin2->have_posts()) {
+                                                                    $query_rate_admin2->the_post();
+                                                                    
+                                                                    $post_id = get_the_ID();
+                                                                    $author_id = get_the_author($post_id);
+                                                                     $user = get_user_by( 'id', $author_id );
+                                                                 ?>
+                                                                    <li>
+                                                                        <div>
+                                                                            <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
+                                                                            <div>
+                                                                                <h3 class="name-title"><?php echo $author_id; ?></h3>
+                                                                                <span><?php echo get_post_meta($post_id,'wpcf-rating',true); ?></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p>
+                                                                           <?php echo get_the_content(); ?>
+                                                                        </p>
+                                                                        <a href="<?php echo get_the_permalink(); ?>" class="btn brn-default">ReaD FULL REVIEWS</a>
+                                                                    </li>
+                                                                <?php 
+                                                                if($i==5){
+                                                                    ?>
+                                                                    </ul>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-xs-6">
+                                                                        <div class="reviews_box">
+                                                                            <ul id="buying-guide-side" class="border-right">
+                                                                    <?php
+                                                                }
+                                                                $i++;
+                                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xs-6">
+                                <!-- <div class="col-xs-6">
                                     <div class="reviews_box">
                                         <ul id="buying-guide-side" class="border-right">
-                                            <?php for ($a = 1; $a < 4; $a++) { ?>
-                                                <li>
-                                                    <div>
-                                                        <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
-                                                        <div>
-                                                            <h3 class="name-title">john smith</h3>
-                                                            <span>9.5/10.0 (ps4)</span>
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
-                                                    </p>
-                                                    <a href="#" class="btn brn-default">ReaD FULL REVIEWS</a>
-                                                </li>
-                                            <?php } ?>
+
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -151,29 +174,89 @@ if ($query->post->ID) {
                                 <div class="col-xs-6">
                                     <div class="user_reviews_box">
                                         <ul id="buying-guide-side">
-                                            <?php for ($a = 1; $a < 4; $a++) { ?>
+                                            <?php 
+                                            $args = array(
+                                                            'post_parent' => $id,
+                                                            'post_type' => 'review',
+                                                            'posts_per_page' => 6,
+                                                            'order' => 'DESC',
+                                                            'tax_query' => array(
+                                                                array(
+                                                                    'taxonomy' => 'reviews-category',
+                                                                    'field' => 'slug',
+                                                                    'terms' => 'user-reviews',
+                                                                )
+                                                            ),
+                                                        );
+                                                        $query = new WP_Query($args);
+                                                        if($query->have_posts()){
+                                                            while ($query->have_posts()){
+                                                            $query->the_post();
+                                                            $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+                                                            $post_id = get_the_ID();
+
+                                             ?>
                                                 <li>
                                                     <div>
                                                         <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
                                                         <div>
-                                                            <h3 class="name-title">john smith</h3>
-                                                            <span>9.5/10.0 (ps4)
-                                                                &nbsp; <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                                                            </span>
+                                                            <h3 class="name-title"><?php the_title(); ?></h3>
+                                                            <span><?php echo get_post_meta($post_id,'wpcf-rating',true); ?></span>
                                                         </div>
                                                     </div>
                                                     <p>
-                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
+                                                        <?php echo get_the_content(); ?>
                                                     </p>
+                                                    <a href="<?php echo get_the_permalink(); ?>" class="btn brn-default">ReaD FULL REVIEWS</a>
                                                 </li>
-                                            <?php } ?>
+                                            <?php } 
+                                                }else{
+
+                                                    $args = array(
+                                                            'post_type' => 'review',
+                                                            'posts_per_page' => 3,
+                                                            'order' => 'DESC',
+                                                            'tax_query' => array(
+                                                                array(
+                                                                    'taxonomy' => 'reviews-category',
+                                                                    'field' => 'slug',
+                                                                    'terms' => 'user-reviews',
+                                                                )
+                                                            ),
+                                                        );
+                                                        $query = new WP_Query($args);
+                                                        if($query->have_posts()){
+                                                            while ($query->have_posts()){
+                                                            $query->the_post();
+                                                            $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+                                                            $post_id = get_the_ID();
+                                                            
+                                             ?>
+                                                <li>
+                                                    <div>
+                                                        <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
+                                                        <div>
+                                                            <h3 class="name-title"><?php the_title(); ?></h3>
+                                                            <span><?php echo get_post_meta($post_id,'wpcf-rating',true); ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <p>
+                                                        <?php echo get_the_content(); ?>
+                                                    </p>
+                                                    <a href="<?php echo get_the_permalink(); ?>" class="btn brn-default">ReaD FULL REVIEWS</a>
+                                                </li>
+                                            <?php
+                                                        }
+                                                    }
+                                                }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="user_reviews_box">
                                         <ul id="buying-guide-side" class="border-right">
-                                            <?php for ($a = 1; $a < 4; $a++) { ?>
+                                            <?php /*for ($a = 1; $a < 4; $a++) { ?>
                                                 <li>
                                                     <div>
                                                         <span><img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/author.png"></span>
@@ -188,7 +271,7 @@ if ($query->post->ID) {
                                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.
                                                     </p>
                                                 </li>
-                                            <?php } ?>
+                                            <?php }*/ ?>
                                         </ul>
                                     </div>
                                 </div>

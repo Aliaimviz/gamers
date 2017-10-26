@@ -41,8 +41,8 @@ if (have_posts()) {
                         <h2>Compare</h2>
                     </div>
                     <div class="add_remove_btn_groups pull-right">
-                        <a href="#" class="btn btn-default btn-danger">add</a>
-                        <a href="#" class="btn btn-default btn-black">remove</a>
+                        <a href="#" class="btn btn-default btn-danger" style="display:none;">add</a>
+                        <a href="#" class="btn btn-default btn-black" id="remove_btn">remove</a>
                     </div>
                 </div>
             </div>
@@ -138,24 +138,25 @@ if (have_posts()) {
                         </table>
                     </div>
                     <div class="col-xs-9 r-m-p">
-                        <div id="table-slider" class="owl-carousel owl-theme">
+
+                    <div class="owl-carousel owl-theme" id="table-slider">
                             <?php
                             // if(!empty($counts)){
                             $game_id = $_COOKIE['compareArray'];
                             $ids = explode(',', $game_id);
                             $id = array_unique($ids);
-                           /// print_r($id);
+                           // print_r($id[0]);
                             $counts = count($id);
-                            if (!empty($id[0])) {
-                                
+                            if ($id[0]!="null" && !empty($id[0])) {
+
                                 foreach ($id as $keys) {
                                     //echo $keys;
                                     //echo $val;
                                     $featured_img_url = get_the_post_thumbnail_url($keys, 'full');
                                     $title = get_the_title($keys);
                                     ?>
-                                    <div class="item">
-                                        <div class="col-xs-12 r-m-p">
+                                    <div class=" item col-xs-4" style="padding:0;margin:0;">
+                                        <div class="r-m-p">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -244,6 +245,7 @@ if (have_posts()) {
                             }
                             ?>
 
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -262,6 +264,14 @@ if (have_posts()) {
         </div></div></div>
 
 </div>
+<script>
+jQuery(document).ready(function(){
+    jQuery(document).on("click","#remove_btn",function(){
+        jQuery.cookie("compareArray",null);
+        location.reload();
+    });
+});
+</script>
 <?php
 get_sidebar();
 get_footer();

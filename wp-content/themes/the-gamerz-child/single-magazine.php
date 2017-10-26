@@ -7,18 +7,18 @@ get_header();
 $post_id = get_the_ID();
 $template = get_post_meta($post_id, 'set_template', true);
 ?>
-<div id="primary" class="content-area">
+<div id="primary asdsd" class="content-area">
     <main id="main" class="site-main">
         <div class="magazine-single-page">
             <?php
-            $user_id = get_current_user_id(); 
-                    $post_ids = get_the_ID();
-                     $post_counts = get_post_meta($post_ids,'post_likes_more',true);
-                     if(empty($post_counts)){
-                        $counts = 0;
-                     }else{
-                        $counts = count(get_post_meta($post_ids,'post_likes_more',true));
-                     }
+            $user_id = get_current_user_id();
+            $post_ids = get_the_ID();
+            $post_counts = get_post_meta($post_ids, 'post_likes_more', true);
+            if (empty($post_counts)) {
+                $counts = 0;
+            } else {
+                $counts = count(get_post_meta($post_ids, 'post_likes_more', true));
+            }
             if (have_posts()) {
                 while (have_posts()):the_post();
                     $Featured_Image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
@@ -35,18 +35,15 @@ $template = get_post_meta($post_id, 'set_template', true);
             }
             ?>
             <div id="sticky-anchor"></div>
-
             <div class="container mt-26 clearfix pad0">
-
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 w316 for-affix">&nbsp;</div>
-
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 w316 right-sidebar-gadget">
                     <div class="gadgets">
                         <h2 class="Raleway"> <i class="fa fa-mobile" aria-hidden="true"></i> Gadgets</h2>
                         <div class="gadgets-content">
                             <h3 class="Raleway">now reading</h3>
                             <p class="Raleway">
-                                <?= get_the_excerpt(); ?>...
+                                <?php get_the_excerpt(); ?>...
                             </p>
                         </div>
                         <div class="row">
@@ -84,191 +81,104 @@ $template = get_post_meta($post_id, 'set_template', true);
                             </ul>
                         </div>
                     </div>
-                    <?php 
-                     //print_r($pst_count);
-                     $post_likes_user = get_post_meta($post_ids,'post_likes_more',true);
-                     
-                     function getUserIP()
-                      {
-                          $client  = @$_SERVER['HTTP_CLIENT_IP'];
-                          $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-                          $remote  = $_SERVER['REMOTE_ADDR'];
+                    <?php
+                    //print_r($pst_count);
+                    $post_likes_user = get_post_meta($post_ids, 'post_likes_more', true);
 
-                          if(filter_var($client, FILTER_VALIDATE_IP))
-                          {
-                              $ip = $client;
-                          }
-                          elseif(filter_var($forward, FILTER_VALIDATE_IP))
-                          {
-                              $ip = $forward;
-                          }
-                          else
-                          {
-                              $ip = $remote;
-                          }
+                    function getUserIP() {
+                        $client = @$_SERVER['HTTP_CLIENT_IP'];
+                        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+                        $remote = $_SERVER['REMOTE_ADDR'];
 
-                          return $ip;
-                      }
+                        if (filter_var($client, FILTER_VALIDATE_IP)) {
+                            $ip = $client;
+                        } elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
+                            $ip = $forward;
+                        } else {
+                            $ip = $remote;
+                        }
 
+                        return $ip;
+                    }
 
-                     $user_ip = getUserIP();
+                    $user_ip = getUserIP();
                     ?>
                     <div class="loader_show" style="display:none;position: relative;left: 20%;top: 79px;z-index: 9999999999999999999;"><img src="<?php echo site_url(); ?>/ajax-loader.gif"/></div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 social-btns">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bdr" id="heart">
                             <div class="Success_login_counter" style="display:none;">
-                              
+
                             </div>
                             <?php
-                            if(!empty($post_likes_user)){
-                              if(in_array($user_ip,$post_likes_user)){
-                              ?>
-                              
-                               <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="dislikes"><i class="fa fa-heart" aria-hidden="true"></i>
-                              <?php
-                            }else{
-                              ?>
-                             <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                              <?php
-                              }
-                            }else{
-                              ?>
-                              <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                              <?php
-                            }
-                            
-                            ?>
-                            
-                                
-                                <span>Total <span class="counter_likes"><?php //echo $counts; ?></span></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <a href="#" class="addthis_button_compact">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                <span>Share</span>
-                            </a>	
-                        </div>
-                    </div>
-                </div>
-                <div class="main-flex-div">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pad-r19-l17 content-single-magazine">
+                            if (!empty($post_likes_user)) {
+                                if (in_array($user_ip, $post_likes_user)) {
+                                    ?>
 
-                        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-                                <?php
-                                the_content();
-                                //comments_template( '', true ); 
-                                ?>
-
-                                <?php
-                                // If comments are open or we have at least one comment, load up the comment template.
-                                /* if ( comments_open() || get_comments_number() ) :
-                                  comments_template( '', true );
-                                  endif; */
-                                if (comments_open() || get_comments_number()) :
-                                    comments_template();
-                                endif;
-                                ?>
-
-                            <?php endwhile; ?>
-                        <?php endif; ?>
+                                    <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="dislikes"><i class="fa fa-heart" aria-hidden="true"></i>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <a href="javascript:void(0);" id="<?php echo get_the_ID(); ?>" data-user-id="<?php echo $user_ip; ?>" class="likes_btn"><i class="fa fa-heart-o" aria-hidden="true"></i>
+                                            <?php
+                                        }
+                                        ?>
 
 
+                                        <span>Total <span class="counter_likes"><?php //echo $counts;             ?></span></span>
+                                    </a>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                        <a href="#" class="addthis_button_compact">
+                                            <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                            <span>Share</span>
+                                        </a>	
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="main-flex-div">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pad-r19-l17 content-single-magazine">
 
+                                            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                                                    <?php
+                                                    the_content();
+                                                    //comments_template( '', true ); 
+                                                    ?>
 
+                                                    <?php
+                                                    // If comments are open or we have at least one comment, load up the comment template.
+                                                    /* if ( comments_open() || get_comments_number() ) :
+                                                      comments_template( '', true );
+                                                      endif; */
+                                                    if (comments_open() || get_comments_number()) :
+                                                        comments_template();
+                                                    endif;
+                                                    ?>
 
-                        <?php /* <div class="mg-slider" id="photos">
-                          <div id="main_area">
-                          <div class="row">
-                          <div class="col-xs-12" id="slider">
-                          <div class="row">
-                          <div class="col-sm-12" id="carousel-bounding-box">
-                          <div class="carousel slide" id="myCarousel">
-                          <div class="carousel-inner">
-                          <div class="active item" data-slide-number="0">
-                          <img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-1.png">
-                          </div>
-                          <div class="item" data-slide-number="1">
-                          <img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-2.png">
-                          </div>
-                          <div class="item" data-slide-number="2">
-                          <img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-3.png">
-                          </div>
-                          <div class="item" data-slide-number="3">
-                          <img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-4.png">
-                          </div>
-                          <div class="item" data-slide-number="4">
-                          <img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-5.png">
-                          </div>
-                          <div class="item" data-slide-number="5">
-                          <img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-6.png">
-                          </div>
-                          </div>
-                          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                          <span class="glyphicon glyphicon-chevron-left"></span>
-                          </a>
-                          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                          <span class="glyphicon glyphicon-chevron-right"></span>
-                          </a>
+                                                <?php endwhile; ?>
+                                            <?php endif; ?>
+                                            <div class="comments-form-box">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 magazine-detail-sidebar">
+                                            <?php
+                                            if ($template == "Reviews") {
+                                                dynamic_sidebar('magazine-review-sidebar');
+                                            } else {
+                                                dynamic_sidebar('Magazine Detail Page Sidebar');
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </main><!-- #main -->
+                                    </div><!-- #primary -->
 
-                          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                          <span class="fa fa-arrow-circle-left"></span>
-                          </a>
-                          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                          <span class="fa fa-arrow-circle-right"></span>
-                          </a>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-
-                          <div class="row hidden-xs" id="slider-thumbs">
-                          <ul class="hide-bullets">
-                          <li class="col-sm-2">
-                          <a class="thumbnail" id="carousel-selector-0"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-1.png"></a>
-                          </li>
-                          <li class="col-sm-2">
-                          <a class="thumbnail" id="carousel-selector-1"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-2.png"></a>
-                          </li>
-                          <li class="col-sm-2">
-                          <a class="thumbnail" id="carousel-selector-2"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-3.png"></a>
-                          </li>
-                          <li class="col-sm-2">
-                          <a class="thumbnail" id="carousel-selector-3"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-4.png"></a>
-                          </li>
-                          <li class="col-sm-2">
-                          <a class="thumbnail" id="carousel-selector-4"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-5.png"></a>
-                          </li>
-                          <li class="col-sm-2">
-                          <a class="thumbnail" id="carousel-selector-5"><img src="<?= get_bloginfo( 'stylesheet_directory' ); ?>/assets/img/magazine-single/slider/slider-thumb-6.png"></a>
-                          </li>
-                          </ul>
-                          </div>
-                          </div>
-                          </div> */ ?>
-
-                        <div class="comments-form-box">
-
-                        </div>
-
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad0 magazine-detail-sidebar">
-                        <?php
-                        if ($template == "Reviews") {
-                            dynamic_sidebar('magazine-review-sidebar');
-                        } else {
-                            dynamic_sidebar('Magazine Detail Page Sidebar');
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main><!-- #main -->
-</div><!-- #primary -->
-
-<?php
-get_footer();
+                                    <?php
+                                    get_footer();
+                                    

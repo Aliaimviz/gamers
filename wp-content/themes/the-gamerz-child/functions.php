@@ -265,6 +265,15 @@ register_sidebar(array(
     'before_title' => '<h2 class="widget-title">',
     'after_title' => '</h2>',
 ));
+register_sidebar(array(
+    'name' => esc_html__('Buying Guid Sidbar', 'the-gamerz-child'),
+    'id' => 'buying-guid-sidebar',
+    'description' => esc_html__('Add widgets here.', 'the-gamerz-child'),
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget' => '</section>',
+    'before_title' => '<h2 class="widget-title">',
+    'after_title' => '</h2>',
+));
 
 
 
@@ -396,10 +405,12 @@ function mycustomScript() {
     wp_enqueue_style('Owl-theme', get_stylesheet_directory_uri() . '/assets/css/owl.theme.css', array(), 10.0, 'all');
     wp_enqueue_style('font-style-sheet', get_stylesheet_directory_uri() . '/assets/fonts/font-style-sheet.css', array(), 10.0, 'all');
     wp_enqueue_style('jquery-validation-css', get_stylesheet_directory_uri() . '/assets/css/validationEngine.jquery.css', array(), 10.0, 'all');
+    wp_enqueue_style('Pretty-photo-css', get_stylesheet_directory_uri() . '/assets/css/prettyPhoto.css', array(), 10.0, 'all');
 
     wp_enqueue_script('Js-Owl-carousel-min', get_stylesheet_directory_uri() . '/assets/js/owl.carousel.js', array(), 10.0, true);
     wp_enqueue_script('Js-validation-js', get_stylesheet_directory_uri() . '/assets/js/jquery.validationEngine.js', array(), 10.0, true);
     wp_enqueue_script('Js-validation-en', get_stylesheet_directory_uri() . '/assets/js/jquery.validationEngine-en.js', array(), 10.0, true);
+    wp_enqueue_script('pretty-photo-js', get_stylesheet_directory_uri() . '/assets/js/jquery.prettyPhoto.js', array(), 10.0, true);
     wp_enqueue_script('Js-main', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), 10.0, true);
 
     wp_localize_script('Js-main', 'configs', array(
@@ -457,7 +468,7 @@ function custom_user_review() {
             wp_set_post_terms($post_ID, 39, 'reviews-category');
             $total = ($rating);
             update_post_meta($post_ID, 'wpcf-rating', $total);
-            update_post_meta($post_ID, 'wpcf-rating-post',$game_ID );
+            update_post_meta($post_ID, 'wpcf-rating-post', $game_ID);
         }
     } else {
         

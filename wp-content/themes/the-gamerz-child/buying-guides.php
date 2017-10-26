@@ -59,7 +59,7 @@ get_header();
                                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                                         <?php
                                         the_content();
-                                        //comments_template( '', true ); 
+//                                        comments_template( '', true ); 
                                         ?>
                                         <?php
                                         // If comments are open or we have at least one comment, load up the comment template.
@@ -72,76 +72,6 @@ get_header();
                                         ?>
                                     <?php endwhile; ?>
                                 <?php endif; ?>
-                                <!--                                                                <div class="simple-heading-para-content">
-                                                                                                    <h1>introduction</h1>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                </div>
-                                                                                                <div class="simple-heading-para-content simple-content-2">
-                                                                                                    <h1>how to choose best gaming headsets</h1>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                                                                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                                                                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                                                                                    <a href="#" class="simple-content-readmore">Read More</a>
-                                                                                                </div>-->
                                 <div class="image-text-quote">
                                     <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/magazine-single-banner.png">
                                 </div>
@@ -574,8 +504,6 @@ get_header();
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div id="adv_team_4_columns_carousel"
                                      class="hide carousel slide four_shows_one_move team_columns_carousel_wrapper"
                                      data-ride="carousel" data-interval="2000" data-pause="hover">
@@ -1111,12 +1039,9 @@ get_header();
                                 porro, culpa esse temporibus nam tempore maiores fugiat atque ipsum, et quaerat
                                 dicta voluptas veritatis voluptatem, ea consequuntur.</p>
                         </div>
-
-
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png"
-                                     style="height: 350px;">
+                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png" style="height: 350px;" class="img-responsive center-block">
                             </div>
                             <div class="col-md-8">
                                 <h1 class="title">TITLE TILTE TITLE</h1>
@@ -1129,7 +1054,8 @@ get_header();
                                             alt=""></div>
                                     <div class="col-md-3"><h5 class="user-heading">USER</h5><img
                                             src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png"
-                                            alt=""></div>
+                                            alt="">
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2>
@@ -1140,277 +1066,9 @@ get_header();
                                         <p>Play Station4</p></div>
                                     <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2>
                                         <p>Play Station4</p></div>
-
                                 </div>
-
                             </div>
                         </div>
-
-
-                        <div class="row" style="margin-bottom: 50px;">
-                            <div class="col-md-4">
-                                <h4 class="title-game bottom-border">editors Don't like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                                <h4 class="title-game bottom-border">editors like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-8 ">
-                                <div class="top-bottum-border">
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/44.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer47.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer48.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer1.png"
-                                            alt=""></div>
-
-                                </div>
-
-
-                                <div class="row tag-padding">
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">Status</h6>
-                                        <p>LIVE</p>
-                                        <h6 class="title-game">plattaforma</h6>
-                                        <p>SENZA</p>
-                                        <p>COOPERATIVO </p>
-                                        <h6 class="title-game">SYSTEMA DI PAGAMENTO</h6>
-                                        <p>PAY TO PLAY</p>
-                                        <p>FREE TO PLAY</p>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">DATA DI USCITA</h6>
-                                        <p>or TBA (To Be Announced)</p>
-                                        <h6 class="title-game">MULTIPLAYER </h6>
-                                        <p>PC</p>
-                                        <p>MAC</p>
-                                        <p>PS4</p>
-                                        <p>XBOX ONE</p>
-                                        <h6 class="title-game">AMBIENTAZIONE</h6>
-                                        <p>GUERRA</p>
-                                        <p>FANTASY</p>
-
-
-                                    </div>
-
-                                </div>
-                                <div style="text-align: center;margin-top: 10px;"><a href="#"
-                                                                                     class="simple-content-readmore black-bg">Visit
-                                        Offical Website</a></div>
-
-
-                                <div class="simple-heading-para-content simple-content-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <a href="#" class="simple-content-readmore"> Go To Page</a>
-                                    <a href="#" class="simple-content-readmore black-bg">Visit Offical Website</a>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png"
-                                     style="height: 350px;">
-                            </div>
-                            <div class="col-md-8">
-                                <h1 class="title">TITLE TILTE TITLE</h1>
-                                <div class="row bg-red">
-                                    <div class="col-md-3 after_block"><h5>Your</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png"
-                                            alt=""></div>
-                                    <div class="col-md-6 after_block"><h5>G2A SCORE</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png"
-                                            alt=""></div>
-                                    <div class="col-md-3"><h5 class="user-heading">USER</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png"
-                                            alt=""></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Produttore </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> GENRE </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2>
-                                        <p>Play Station4</p></div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                        <div class="row" style="margin-bottom: 50px;">
-                            <div class="col-md-4">
-                                <h4 class="title-game bottom-border">editors Don't like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-minus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                                <h4 class="title-game bottom-border">editors like</h4>
-                                <div class="text-icons">
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Landrush Quickly </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>AI can Be bit single
-                                        minded </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Team Bui </p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>No VR Support</p>
-                                    <p><i class="fa fa-plus-square" aria-hidden="true"></i>Visulay A Bit Blind</p>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-8 ">
-                                <div class="top-bottum-border">
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/44.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer47.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer48.png"
-                                            alt=""></div>
-                                    <div class="col-md-3 col-xs-6"><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/layer1.png"
-                                            alt=""></div>
-
-                                </div>
-
-
-                                <div class="row tag-padding">
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">Status</h6>
-                                        <p>LIVE</p>
-                                        <h6 class="title-game">plattaforma</h6>
-                                        <p>SENZA</p>
-                                        <p>COOPERATIVO </p>
-                                        <h6 class="title-game">SYSTEMA DI PAGAMENTO</h6>
-                                        <p>PAY TO PLAY</p>
-                                        <p>FREE TO PLAY</p>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h6 class="title-game">DATA DI USCITA</h6>
-                                        <p>or TBA (To Be Announced)</p>
-                                        <h6 class="title-game">MULTIPLAYER </h6>
-                                        <p>PC</p>
-                                        <p>MAC</p>
-                                        <p>PS4</p>
-                                        <p>XBOX ONE</p>
-                                        <h6 class="title-game">AMBIENTAZIONE</h6>
-                                        <p>GUERRA</p>
-                                        <p>FANTASY</p>
-
-
-                                    </div>
-
-                                </div>
-                                <div style="text-align: center;margin-top: 10px;"><a href="#"
-                                                                                     class="simple-content-readmore black-bg">Visit
-                                        Offical Website</a></div>
-
-
-                                <div class="simple-heading-para-content simple-content-2">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis repellat
-                                        delectus, cum porro, culpa esse temporibus nam tempore maiores fugiat atque
-                                        ipsum, et quaerat dicta voluptas veritatis voluptatem, ea consequuntur.</p>
-                                    <a href="#" class="simple-content-readmore"> Go To Page</a>
-                                    <a href="#" class="simple-content-readmore black-bg">Visit Offical Website</a>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/slider-1.png"
-                                     style="height: 350px;">
-                            </div>
-                            <div class="col-md-8">
-                                <h1 class="title">TITLE TILTE TITLE</h1>
-                                <div class="row bg-red">
-                                    <div class="col-md-3 after_block"><h5>Your</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon2-1.png"
-                                            alt=""></div>
-                                    <div class="col-md-6 after_block"><h5>G2A SCORE</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexagon.png"
-                                            alt=""></div>
-                                    <div class="col-md-3"><h5 class="user-heading">USER</h5><img
-                                            src="http://site.startupbug.net:6999/thegamers/wp-content/uploads/2017/09/hexgaon1.png"
-                                            alt=""></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Piattafarma </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> Produttore </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> GENRE </h2>
-                                        <p>Play Station4</p></div>
-                                    <div class="col-md-3 col-xs-6"><h2 class="title-game"> SPEEDIZONE </h2>
-                                        <p>Play Station4</p></div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-
                         <div class="row">
                             <div class="col-md-4">
                                 <h4 class="title-game bottom-border">editors Don't like</h4>
